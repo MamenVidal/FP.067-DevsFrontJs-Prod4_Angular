@@ -9,88 +9,29 @@
 </header>
 
 <main>
-
-  <div id="myCarousel" class="carousel slide" data-bs-ride="carousel">
+  <div id="carouselTitulo" class="carousel slide" data-bs-ride="carousel">
     <div class="carousel-indicators">
-      <!-- TODO Hacer un bucle del archivo db.json para crear dinánicamente los botones del carousel -->
-      <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-      <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
-      <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="2" aria-label="Slide 3"></button>
-      <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="3" aria-label="Slide 4"></button>
-      <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="4" aria-label="Slide 5"></button>
-      <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="5" aria-label="Slide 6"></button>
+      <button *ngFor="let dia of viajeData?.MiViaje; let i = index" [class.active]="i === 0" [attr.data-bs-target]="'#carouselTitulo'" [attr.data-bs-slide-to]="i" aria-current="true"></button>
     </div>
     <div class="carousel-inner">
-      <!-- TODO Hacer un bucle del archivo db.json para crear dinánicamente los divs del carousel -->
-      <div class="carousel-item active" style="background-image: url('../assets/img/dia1.jpg'); background-size: cover; background-position: center;">
-        <!-- <svg class="bd-placeholder-img" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false"><rect width="100%" height="100%" fill="#777"/></svg> -->
+      <div class="carousel-item" *ngFor="let dia of viajeData?.MiViaje; let i = index" [class.active]="i === 0" [style.background-image]="'url(' + dia.imagen + ')'" style="background-size: cover; background-position: center;">
         <div class="container">
           <div class="carousel-caption">
-            <h1>Día 1</h1>
-            <p>Madrid</p>
-            <p><a class="btn btn-lg btn-primary" href="#">Ver</a></p>
-          </div>
-        </div>
-      </div>
-      <div class="carousel-item" style="background-image: url('../assets/img/dia2.jpg'); background-size: cover; background-position: center;">
-        <!-- <svg class="bd-placeholder-img" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false"><rect width="100%" height="100%" fill="#777"/></svg> -->
-        <div class="container">
-          <div class="carousel-caption">
-            <h1>Día 2</h1>
-            <p>Barcelona</p>
-            <p><a class="btn btn-lg btn-primary" href="#">Ver</a></p>
-          </div>
-        </div>
-      </div>
-      <div class="carousel-item" style="background-image: url('../assets/img/dia3.jpg'); background-size: cover; background-position: center;">
-        <!-- <svg class="bd-placeholder-img" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false"><rect width="100%" height="100%" fill="#777"/></svg> -->
-        <div class="container">
-          <div class="carousel-caption">
-            <h1>Día 3</h1>
-            <p>Valencia</p>
-            <p><a class="btn btn-lg btn-primary" href="#">Ver</a></p>
-          </div>
-        </div>
-      </div>
-      <div class="carousel-item" style="background-image: url('../assets/img/dia4.jpg'); background-size: cover; background-position: center;">
-        <!-- <svg class="bd-placeholder-img" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false"><rect width="100%" height="100%" fill="#777"/></svg> -->
-        <div class="container">
-          <div class="carousel-caption">
-            <h1>Día 4</h1>
-            <p>Sevilla</p>
-            <p><a class="btn btn-lg btn-primary" href="#">Ver</a></p>
-          </div>
-        </div>
-      </div>
-      <div class="carousel-item" style="background-image: url('../assets/img/dia5.jpg'); background-size: cover; background-position: center;">
-        <!-- <svg class="bd-placeholder-img" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false"><rect width="100%" height="100%" fill="#777"/></svg> -->
-        <div class="container">
-          <div class="carousel-caption">
-            <h1>Día 5</h1>
-            <p>Bilbao</p>
-            <p><a class="btn btn-lg btn-primary" href="#">Ver</a></p>
-          </div>
-        </div>
-      </div>
-      <div class="carousel-item" style="background-image: url('../assets/img/dia6.jpg'); background-size: cover; background-position: center;">
-        <!-- <svg class="bd-placeholder-img" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false"><rect width="100%" height="100%" fill="#777"/></svg> -->
-        <div class="container">
-          <div class="carousel-caption">
-            <h1>Día 6</h1>
-            <p>Valencia</p>
+            <h1>{{ dia.dia }}</h1>
+            <p>{{ dia.ciudad }}</p>
             <p><a class="btn btn-lg btn-primary" href="#">Ver</a></p>
           </div>
         </div>
       </div>
     </div>
-    <button class="carousel-control-prev" type="button" data-bs-target="#myCarousel" data-bs-slide="prev">
+    <a class="carousel-control-prev" href="#carouselTitulo" role="button" data-bs-slide="prev">
       <span class="carousel-control-prev-icon" aria-hidden="true"></span>
       <span class="visually-hidden">Anterior</span>
-    </button>
-    <button class="carousel-control-next" type="button" data-bs-target="#myCarousel" data-bs-slide="next">
+    </a>
+    <a class="carousel-control-next" href="#carouselTitulo" role="button" data-bs-slide="next">
       <span class="carousel-control-next-icon" aria-hidden="true"></span>
       <span class="visually-hidden">Siguiente</span>
-    </button>
+    </a>
   </div>
   
   <!-- TODO Aquí añadiría el buscador. -->
