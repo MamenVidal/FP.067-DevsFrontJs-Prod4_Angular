@@ -4,85 +4,91 @@
             "id": 1,
             "dia": "Lunes",
             "nombre": "Primer día en Madrid",
-            "ciudad visitada": "Madrid",
-            "nombre alojamiento": "Hotel Uno",
+            "ciudad": "Madrid",
+            "alojamiento": "Hotel Uno",
             "actividades": [
                 "Visitar el Museo del Prado",
                 "Caminar por el Parque del Retiro",
                 "Comer en un restaurante local"
             ],
-            "description": "Hoy es nuestro primer día en Madrid. Hemos visitado el famoso Museo del Prado, luego caminamos por el hermoso Parque del Retiro y disfrutamos de una deliciosa comida en un restaurante local.",
-            "video": "/img/madrid_day1.mp4"
+            "descripcion": "Hoy es nuestro primer día en Madrid. Hemos visitado el famoso Museo del Prado, luego caminamos por el hermoso Parque del Retiro y disfrutamos de una deliciosa comida en un restaurante local.",
+            "video": "/img/madrid_day1.mp4",
+            "imagen": "/assets/img/dia1.jpg"
         },
         {
             "id": 2,
             "dia": "Martes",
             "nombre": "Explorando Barcelona",
-            "ciudad visitada": "Barcelona",
-            "nombre alojamiento": "Hotel Dos",
+            "ciudad": "Barcelona",
+            "alojamiento": "Hotel Dos",
             "actividades": [
                 "Visitar la Sagrada Familia",
                 "Recorrer Las Ramblas",
                 "Degustar tapas en un mercado"
             ],
-            "description": "Hoy nos encontramos en la hermosa Barcelona. Visitamos la impresionante Sagrada Familia, recorrimos Las Ramblas y disfrutamos de tapas deliciosas en un mercado local.",
-            "video": "/img/barcelona_day2.mp4"
+            "descripcion": "Hoy nos encontramos en la hermosa Barcelona. Visitamos la impresionante Sagrada Familia, recorrimos Las Ramblas y disfrutamos de tapas deliciosas en un mercado local.",
+            "video": "/img/barcelona_day2.mp4",
+            "imagen": "/assets/img/dia2.jpg"
         },
         {
             "id": 3,
             "dia": "Miércoles",
             "nombre": "Descubriendo Valencia",
-            "ciudad visitada": "Valencia",
-            "nombre alojamiento": "Hotel Tres",
+            "ciudad": "Valencia",
+            "alojamiento": "Hotel Tres",
             "actividades": [
                 "Visitar la Ciudad de las Artes y las Ciencias",
                 "Paseo por la playa",
                 "Cena en un restaurante junto al mar"
             ],
-            "description": "Hoy exploramos la encantadora Valencia. Visitamos la Ciudad de las Artes y las Ciencias, dimos un paseo relajante por la playa y disfrutamos de una cena frente al mar en un restaurante local.",
-            "video": "/img/valencia_day3.mp4"
+            "descripcion": "Hoy exploramos la encantadora Valencia. Visitamos la Ciudad de las Artes y las Ciencias, dimos un paseo relajante por la playa y disfrutamos de una cena frente al mar en un restaurante local.",
+            "video": "/img/valencia_day3.mp4",
+            "imagen": "/assets/img/dia3.jpg"
         },
         {
             "id": 4,
             "dia": "Jueves",
             "nombre": "Explorando Sevilla",
-            "ciudad visitada": "Sevilla",
-            "nombre alojamiento": "Hotel Cuatro",
+            "ciudad": "Sevilla",
+            "alojamiento": "Hotel Cuatro",
             "actividades": [
                 "Visitar la Catedral de Sevilla",
                 "Recorrer el Barrio de Santa Cruz",
                 "Degustar tapas en un bar tradicional"
             ],
-            "description": "Hoy nos encontramos en la hermosa Sevilla. Visitamos la impresionante Catedral de Sevilla, recorrimos el encantador Barrio de Santa Cruz y disfrutamos de auténticas tapas en un bar tradicional.",
-            "video": "/img/sevilla_day4.mp4"
+            "descripcion": "Hoy nos encontramos en la hermosa Sevilla. Visitamos la impresionante Catedral de Sevilla, recorrimos el encantador Barrio de Santa Cruz y disfrutamos de auténticas tapas en un bar tradicional.",
+            "video": "/img/sevilla_day4.mp4",
+            "imagen": "/assets/img/dia4.jpg"
         },
         {
             "id": 5,
             "dia": "Viernes",
             "nombre": "Aventuras en Bilbao",
-            "ciudad visitada": "Bilbao",
-            "nombre alojamiento": "Hotel Cinco",
+            "ciudad": "Bilbao",
+            "alojamiento": "Hotel Cinco",
             "actividades": [
                 "Visitar el Museo Guggenheim",
                 "Explorar el Casco Viejo",
                 "Degustar pintxos en una taberna local"
             ],
-            "description": "Hoy exploramos la vibrante Bilbao. Visitamos el famoso Museo Guggenheim, exploramos el histórico Casco Viejo y probamos deliciosos pintxos en una taberna local.",
-            "video": "/img/bilbao_day5.mp4"
+            "descripcion": "Hoy exploramos la vibrante Bilbao. Visitamos el famoso Museo Guggenheim, exploramos el histórico Casco Viejo y probamos deliciosos pintxos en una taberna local.",
+            "video": "/img/bilbao_day5.mp4",
+            "imagen": "/assets/img/dia5.jpg"
         },
         {
             "id": 6,
             "dia": "Sábado",
             "nombre": "Diversión en Valencia",
-            "ciudad visitada": "Valencia",
-            "nombre alojamiento": "Hotel Tres",
+            "ciudad": "Valencia",
+            "alojamiento": "Hotel Tres",
             "actividades": [
                 "Visitar el Oceanografico",
                 "Paseo por el Jardín del Turia",
                 "Cena en un restaurante junto al mar"
             ],
-            "description": "Hoy volvemos a Valencia para más diversión. Visitamos el Oceanografico, disfrutamos de un paseo por el hermoso Jardín del Turia y cenamos frente al mar en otro restaurante local.",
-            "video": "/img/valencia_day6.mp4"
+            "descripcion": "Hoy volvemos a Valencia para más diversión. Visitamos el Oceanografico, disfrutamos de un paseo por el hermoso Jardín del Turia y cenamos frente al mar en otro restaurante local.",
+            "video": "/img/valencia_day6.mp4",
+            "imagen": "/assets/img/dia6.jpg"
         }
     ]
 }
