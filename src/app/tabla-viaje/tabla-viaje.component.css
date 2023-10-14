@@ -1,0 +1,24 @@
+.tabla-viaje-container {
+    margin-bottom: 2em;
+}
+.tabla-viaje-filters {
+    margin:0;
+}
+.tabla-viaje-filter-day {
+    margin-right: 15px;
+}
+.tabla-viaje-filter-city {
+    margin-right: 15px;
+}
+.tabla-viaje-table {
+    margin: 15px 0;
+}
+.tabla-viaje-table th,
+.tabla-viaje-table td {
+    margin:0;
+    border: 1px solid #aaa;
+    padding: 5px;
+}
+.tabla-viaje-table th {
+    background-color:  rgb(238, 238, 238);
+}

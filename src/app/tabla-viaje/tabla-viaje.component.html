@@ -1,0 +1,26 @@
+<div class="container tabla-viaje-container">
+    <div class="tabla-viaje-filters">
+        <span class="tabla-viaje-filter-day">
+            <input [(ngModel)]="filtroDia" placeholder="Filtrar por día">
+        </span>
+        <span class="tabla-viaje-filter-city">
+            <input [(ngModel)]="filtroCiudad" placeholder="Filtrar por ciudad">
+        </span>
+    </div>
+    <table class="tabla-viaje-table">
+        <tr>
+            <th>Día</th>
+            <th>Nombre</th>
+            <th>Ciudad</th>
+            <th>Alojamiento</th>
+            <th>Descripción</th>
+        </tr>
+        <tr *ngFor="let viaje of filtrarViajes()">
+            <td>{{ viaje.dia }}</td>
+            <td>{{ viaje.nombre }}</td>
+            <td>{{ viaje.ciudad }}</td>
+            <td>{{ viaje.alojamiento }}</td>
+            <td>{{ viaje.descripcion }}</td>
+        </tr>
+    </table>
+</div>
