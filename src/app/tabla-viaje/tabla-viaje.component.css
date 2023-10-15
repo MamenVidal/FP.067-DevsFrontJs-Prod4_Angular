@@ -1,17 +1,8 @@
 .tabla-viaje-container {
     margin-bottom: 2em;
 }
-.tabla-viaje-filters {
-    margin:0;
-}
-.tabla-viaje-filter-day {
-    margin-right: 15px;
-}
-.tabla-viaje-filter-city {
-    margin-right: 15px;
-}
-.tabla-viaje-table {
-    margin: 15px 0;
+.tabla-viaje-filter {
+    margin: 10px;
 }
 .tabla-viaje-table th,
 .tabla-viaje-table td {
@@ -21,4 +12,15 @@
 }
 .tabla-viaje-table th {
     background-color:  rgb(238, 238, 238);
+}
+
+.tablaViajeComponent {
+    padding: 10px;
+}
+.tablaViajeComponent:HOVER {
+    background-color:  #EEEEEE;
+}
+
+.tabla-viaje-filter > label {
+    padding-left: 5px;
 }
