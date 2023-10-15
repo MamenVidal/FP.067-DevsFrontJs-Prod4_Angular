@@ -4,13 +4,13 @@ import { FormsModule } from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { TablaViajeComponent } from './tabla-viaje/tabla-viaje.component';
+import { DaysComponent } from './days/days.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    TablaViajeComponent
+    DaysComponent
   ],
   imports: [
     BrowserModule,

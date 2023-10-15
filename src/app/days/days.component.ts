@@ -3,11 +3,11 @@ import { ViajeService } from '../viaje/viaje.service';
 import { ViajeData } from '../viaje/viaje-data';
 
 @Component({
-  selector: 'app-tabla-viaje',
-  templateUrl: './tabla-viaje.component.html',
-  styleUrls: ['./tabla-viaje.component.css']
+  selector: 'app-days',
+  templateUrl: './days.component.html',
+  styleUrls: ['./days.component.css']
 })
-export class TablaViajeComponent implements OnInit {
+export class DaysComponent implements OnInit {
 
   viajes: any[] = [];
   filtroDia: string = '';
@@ -24,8 +24,14 @@ export class TablaViajeComponent implements OnInit {
 
   filtrarViajes() {
     return this.viajes.filter(v => {
-      return v.dia.toLowerCase().includes(this.filtroDia.toLowerCase()) &&
-             v.ciudad.toLowerCase().includes(this.filtroCiudad.toLowerCase());
+      return this.normalizeStr(v.dia).includes(this.normalizeStr(this.filtroDia)) &&
+             this.normalizeStr(v.ciudad).includes(this.normalizeStr(this.filtroCiudad));
     });
+  }  
+
+  normalizeStr(data: string): string {
+    return data.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase();
   }
+
+  
 }
