@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ViajeService } from '../viaje/viaje.service';
 import { ViajeData } from '../viaje/viaje-data';
+import { modalComponent } from '../modal/modal.component';
 
 @Component({
   selector: 'app-days',
@@ -12,6 +13,8 @@ export class DaysComponent implements OnInit {
   viajes: any[] = [];
   filtroDia: string = '';
   filtroCiudad: string = '';
+  detalleViaje: any | null = null;
+
 
   constructor(private viajeService: ViajeService) { }
   viajeData: ViajeData | undefined;
@@ -33,5 +36,14 @@ export class DaysComponent implements OnInit {
     return data.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase();
   }
 
-  
+  openModal(viaje: any) {
+    this.detalleViaje = viaje;
+    const modalComponentInstance = new modalComponent();
+    modalComponentInstance.openModal();
+  }
+
+  closeModal() {
+    const modalComponentInstance = new modalComponent();
+    modalComponentInstance.closeModal();
+  }
 }

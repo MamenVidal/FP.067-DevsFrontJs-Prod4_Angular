@@ -51,7 +51,7 @@
             <h2 class="mt-3">{{ viaje.nombre }}</h2>
             <p style="font-style: italic;">{{ viaje.dia }}</p>
             <p style="min-height: 115px; text-align: justify;">{{ viaje.descripcion }}</p>
-            <p><a class="btn btn-primary" href="#">Detalles</a></p>
+            <button class="btn-like-link" (click)="openModal(viaje)">Detalles</button>
           </div>
         </div>
     </div>
@@ -63,3 +63,14 @@
     </div>
     
 </div>
+
+
+<div class="modal" *ngIf="detalleViaje">
+    <div class="modal-content">
+      <h2>{{ detalleViaje.nombre }}</h2>
+      <p>{{ detalleViaje.dia }}</p>
+      <p>{{ detalleViaje.descripcion }}</p>
+      <button (click)="closeModal()">Cerrar</button>
+    </div>
+</div>
+
