@@ -40,6 +40,12 @@ export class DaysComponent implements OnInit {
     this.detalleViaje = viaje;
     const modalComponentInstance = new modalComponent();
     modalComponentInstance.openModal();
+
+    // al abrir el modal seteo el video del viaje como src de todos los reproductores de video
+    let videoElement: HTMLVideoElement | null = document.querySelector('video');
+    if (videoElement) {
+      videoElement.src = viaje.video;
+    }
   }
 
   closeModal() {
