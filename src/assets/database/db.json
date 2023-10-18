@@ -12,7 +12,7 @@
                 "Comer en un restaurante local"
             ],
             "descripcion": "Hoy es nuestro primer día en Madrid. Hemos visitado el famoso Museo del Prado, luego caminamos por el hermoso Parque del Retiro y disfrutamos de una deliciosa comida en un restaurante local.",
-            "video": "/img/madrid_day1.mp4",
+            "video": null,
             "imagen": "/assets/img/dia1.jpg"
         },
         {
@@ -27,7 +27,7 @@
                 "Degustar tapas en un mercado"
             ],
             "descripcion": "Hoy nos encontramos en la hermosa Barcelona. Visitamos la impresionante Sagrada Familia, recorrimos Las Ramblas y disfrutamos de tapas deliciosas en un mercado local.",
-            "video": "/img/barcelona_day2.mp4",
+            "video": "assets/video/barcelona.mp4",
             "imagen": "/assets/img/dia2.jpg"
         },
         {
@@ -42,7 +42,7 @@
                 "Cena en un restaurante junto al mar"
             ],
             "descripcion": "Hoy exploramos la encantadora Valencia. Visitamos la Ciudad de las Artes y las Ciencias, dimos un paseo relajante por la playa y disfrutamos de una cena frente al mar en un restaurante local.",
-            "video": "/img/valencia_day3.mp4",
+            "video": "assets/video/valencia.mp4",
             "imagen": "/assets/img/dia3.jpg"
         },
         {
@@ -57,7 +57,7 @@
                 "Degustar tapas en un bar tradicional"
             ],
             "descripcion": "Hoy nos encontramos en la hermosa Sevilla. Visitamos la impresionante Catedral de Sevilla, recorrimos el encantador Barrio de Santa Cruz y disfrutamos de auténticas tapas en un bar tradicional.",
-            "video": "/img/sevilla_day4.mp4",
+            "video": null,
             "imagen": "/assets/img/dia4.jpg"
         },
         {
@@ -72,7 +72,7 @@
                 "Degustar pintxos en una taberna local"
             ],
             "descripcion": "Hoy exploramos la vibrante Bilbao. Visitamos el famoso Museo Guggenheim, exploramos el histórico Casco Viejo y probamos deliciosos pintxos en una taberna local.",
-            "video": "/img/bilbao_day5.mp4",
+            "video": null,
             "imagen": "/assets/img/dia5.jpg"
         },
         {
@@ -87,7 +87,7 @@
                 "Cena en un restaurante junto al mar"
             ],
             "descripcion": "Hoy volvemos a Valencia para más diversión. Visitamos el Oceanografico, disfrutamos de un paseo por el hermoso Jardín del Turia y cenamos frente al mar en otro restaurante local.",
-            "video": "/img/valencia_day6.mp4",
+            "video": "assets/video/valencia.mp4",
             "imagen": "/assets/img/dia6.jpg"
         }
     ]

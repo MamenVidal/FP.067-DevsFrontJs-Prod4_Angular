@@ -70,6 +70,7 @@
       <h2>{{ detalleViaje.nombre }}</h2>
       <p>{{ detalleViaje.dia }}</p>
       <p>{{ detalleViaje.descripcion }}</p>
+      <app-player *ngIf="detalleViaje.video" [videoSrc]="detalleViaje.video"></app-player>
       <button (click)="closeModal()">Cerrar</button>
     </div>
 </div>
