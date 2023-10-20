@@ -51,5 +51,10 @@ export class DaysComponent implements OnInit {
   closeModal() {
     const modalComponentInstance = new modalComponent();
     modalComponentInstance.closeModal();
+    // Pausar el video cuando el modal se cierra
+    let videoElement: HTMLVideoElement | null = document.querySelector('video');
+    if (videoElement) {
+      videoElement.pause();
+    }
   }
 }

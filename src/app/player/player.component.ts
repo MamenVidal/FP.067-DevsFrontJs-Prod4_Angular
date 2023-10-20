@@ -33,5 +33,4 @@ export class PlayerComponent {
     this.videoPlayer.nativeElement.volume = event.target.value;
   }
 
-  // Puedes mantener los otros métodos de eventos aquí...
 }
