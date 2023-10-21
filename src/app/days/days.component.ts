@@ -37,22 +37,22 @@ export class DaysComponent implements OnInit {
   }
 
   openModal(viaje: any) {
-    this.detalleViaje = viaje;
-    const modalComponentInstance = new modalComponent();
-    modalComponentInstance.openModal();
+    const modal = document.querySelector('#modal-viaje-'+viaje.id);
+    modal?.classList.add('show');
 
     // al abrir el modal seteo el video del viaje como src de todos los reproductores de video
-    let videoElement: HTMLVideoElement | null = document.querySelector('video');
+    let videoElement: HTMLVideoElement | null = document.querySelector('#modal-viaje-'+viaje.id+' video');
     if (videoElement) {
       videoElement.src = viaje.video;
     }
   }
 
-  closeModal() {
-    const modalComponentInstance = new modalComponent();
-    modalComponentInstance.closeModal();
+  closeModal(viaje: any) {
+    const modal = document.querySelector('#modal-viaje-'+viaje.id);
+    modal?.classList.remove('show');
+
     // Pausar el video cuando el modal se cierra
-    let videoElement: HTMLVideoElement | null = document.querySelector('video');
+    let videoElement: HTMLVideoElement | null = document.querySelector('#modal-viaje-'+viaje.id+' video');
     if (videoElement) {
       videoElement.pause();
     }
