@@ -12,7 +12,7 @@
                 "Comer en un restaurante local"
             ],
             "descripcion": "Hoy es nuestro primer día en Madrid. Hemos visitado el famoso Museo del Prado, luego caminamos por el hermoso Parque del Retiro y disfrutamos de una deliciosa comida en un restaurante local.",
-            "video": null,
+            "video": "assets/video/Madrid.mp4",
             "imagen": "/assets/img/dia1.jpg"
         },
         {
