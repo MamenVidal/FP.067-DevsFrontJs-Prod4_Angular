@@ -21,15 +21,8 @@
             <h3>{{ dia.nombre }}</h3>
           </div>
         </div>
-        <!-- <div id="modal-dia-{{ dia.id }}" class="modal">
-            <div class="modal-content">
-              <h2>{{ dia.nombre }}</h2>
-              <p>{{ dia.dia }}</p>
-              <p>{{ dia.descripcion }}</p>
-              <app-player *ngIf="dia.video" [videoSrc]="dia.video"></app-player>
-              <button (click)="closeModal(dia)">Cerrar</button>
-            </div>
-        </div> -->
+        
+        <!-- <app-detail [viaje]="viaje" *ngIf="viaje"></app-detail> -->
       </div>
     </div>
     <a class="carousel-control-prev" href="#carouselTitulo" role="button" data-bs-slide="prev">
