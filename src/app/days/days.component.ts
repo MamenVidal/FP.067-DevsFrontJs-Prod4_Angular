@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ViajeService } from '../viaje/viaje.service';
 import { ViajeData } from '../viaje/viaje-data';
-import { modalComponent } from '../modal/modal.component';
+import { DetailComponent } from '../detail/detail.component';
 
 @Component({
   selector: 'app-days',
@@ -9,12 +9,10 @@ import { modalComponent } from '../modal/modal.component';
   styleUrls: ['./days.component.css']
 })
 export class DaysComponent implements OnInit {
-
   viajes: any[] = [];
   filtroDia: string = '';
   filtroCiudad: string = '';
   detalleViaje: any | null = null;
-
 
   constructor(private viajeService: ViajeService) { }
   viajeData: ViajeData | undefined;
@@ -37,24 +35,13 @@ export class DaysComponent implements OnInit {
   }
 
   openModal(viaje: any) {
-    const modal = document.querySelector('#modal-viaje-'+viaje.id);
+    const modal = document.querySelector('#modal-viaje-' + viaje.id);
     modal?.classList.add('show');
+    modal?.setAttribute('style', 'display: flex');
 
-    // al abrir el modal seteo el video del viaje como src de todos los reproductores de video
     let videoElement: HTMLVideoElement | null = document.querySelector('#modal-viaje-'+viaje.id+' video');
     if (videoElement) {
       videoElement.src = viaje.video;
-    }
-  }
-
-  closeModal(viaje: any) {
-    const modal = document.querySelector('#modal-viaje-'+viaje.id);
-    modal?.classList.remove('show');
-
-    // Pausar el video cuando el modal se cierra
-    let videoElement: HTMLVideoElement | null = document.querySelector('#modal-viaje-'+viaje.id+' video');
-    if (videoElement) {
-      videoElement.pause();
     }
   }
 }

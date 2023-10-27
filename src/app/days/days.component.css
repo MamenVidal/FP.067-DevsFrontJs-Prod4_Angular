@@ -58,6 +58,8 @@
     margin-top: 20px;
     border-radius: 5px;
     cursor: pointer;
+    width: 235px;
+    margin: auto;
   }
   
   button:hover {

@@ -1,0 +1,26 @@
+<div id="modal-viaje-{{ viaje.id }}" class="modal modal-viaje-{{ viaje.id }}" *ngIf="viaje">
+    <div class="modal-content">
+        <div class="modal-content-title">
+            <h2>{{ viaje.nombre }}</h2>
+        </div>
+        <div class="modal-content-details">
+            <div class="modal-content-detail">
+                <p class="details details-l">Detalles</p>
+                <p><span class="bold">Día:</span> {{ viaje.dia }}</p>
+                <p><span class="bold">Ciudad:</span> {{ viaje.ciudad }}</p>
+                <p><span class="bold">Alojamiento:</span> {{ viaje.alojamiento }}</p>
+                <p>{{ viaje.descripcion }}</p>
+                <span class="bold">Actividades del día:</span>
+                <ul class="fa-ul" style="--fa-li-margin: 1em;">
+                  <li *ngFor="let actividad of viaje.actividades"><span class="fa-li"><i class="fa-solid fa-check-square"></i></span>{{ actividad }}</li>
+                </ul>
+            </div>
+            <div class="modal-content-video">
+                <p class="details details-r">Vídeo</p>
+                <app-player *ngIf="viaje.video" [videoSrc]="viaje.video"></app-player>
+                <p *ngIf="!viaje.video">Lamentablemente no tenemos un vídeo para este día.</p>
+            </div>
+        </div>
+        <button (click)="closeModal(viaje)">Cerrar</button>
+    </div>
+</div>

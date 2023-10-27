@@ -1,9 +1,5 @@
 <div class="container days-container">
     <div class="days-filters d-flex align-items-center" style="border: 0.1em solid rgb(222, 226, 230); padding: 15px; border-radius: 6px;">
-        <!--<div class="form-group days-filter">
-            <label>Día de la semana</label>
-            <input [(ngModel)]="filtroDia" type="text" class="form-control" placeholder="Lunes, Martes, ...">
-        </div>-->
         <div class="form-group days-filter">
             <label>Día de la semana</label>
             <select [(ngModel)]="filtroDia" class="form-select" placeholder="Selección">
@@ -22,56 +18,32 @@
             <input [(ngModel)]="filtroCiudad" type="text" class="form-control" placeholder="Madrid, Barcelona, Valencia, ..." size="40px">
         </div>
     </div>
-      
-    <!-- TODO Albert: He substituido la tabla por un listado en contenedores. Valorar el diseño más adecuado para la entrega.
-    <table class="days-table">
-        <tr>
-            <th>Día</th>
-            <th>Nombre</th>
-            <th>Ciudad</th>
-            <th>Alojamiento</th>
-            <th>Descripción</th>
-        </tr>
-        <tr *ngFor="let viaje of filtrarViajes()">
-            <td>{{ viaje.dia }}</td>
-            <td>{{ viaje.nombre }}</td>
-            <td>{{ viaje.ciudad }}</td>
-            <td>{{ viaje.alojamiento }}</td>
-            <td>{{ viaje.descripcion }}</td>
-        </tr>
-    </table>
-    -->
-    
+     <!-- Listado de días que cumplen con el filtro. De inicio se mostrarán todos. --> 
     <div class="container marketing mt-5">
         <div class="row">
-          <div class="col-lg-4 mb-5 DaysComponent" *ngFor="let viaje of filtrarViajes()">
-            <div style="width: 100%; text-align: center;">
-                <img class="bd-placeholder-img rounded-circle" width="140" height="140" src="{{ viaje.imagen }}" />
-              </div>
-            <h2 class="mt-3">{{ viaje.nombre }}</h2>
-            <p style="font-style: italic;">{{ viaje.dia }}</p>
-            <p style="min-height: 115px; text-align: justify;">{{ viaje.descripcion }}</p>
-            <button class="btn-like-link" (click)="openModal(viaje)">Detalles</button>
-
-            <div id="modal-viaje-{{ viaje.id }}" class="modal" *ngIf="viaje">
-                <div class="modal-content">
-                <h2>{{ viaje.nombre }}</h2>
-                <p>{{ viaje.dia }}</p>
-                <p>{{ viaje.descripcion }}</p>
-                <app-player *ngIf="viaje.video" [videoSrc]="viaje.video"></app-player>
-                <button (click)="closeModal(viaje)">Cerrar</button>
+            <div class="col-lg-4 mb-5 DaysComponent" *ngFor="let viaje of filtrarViajes()">
+                <div style="width: 100%; text-align: center;">
+                    <img class="bd-placeholder-img rounded-circle" width="140" height="140" src="{{ viaje.imagen }}" />
                 </div>
+                <h2 class="mt-3">{{ viaje.nombre }}</h2>
+                <p style="font-style: italic;">{{ viaje.dia }}</p>
+                <p style="min-height: 115px; text-align: justify;">{{ viaje.descripcion }}</p>
+                <div style="width: 100%; text-align: center;">
+                    <button class="btn-like-link" (click)="openModal(viaje)">Ver detalles</button>
+                </div>
+
+                <!-- Utilizo el componente DetailComponent en lugar del modal -->
+                <app-detail [viaje]="viaje" *ngIf="viaje"></app-detail>
             </div>
-          </div>
         </div>
     </div>
+    <!-- En caso que el listado filtrado no retorne datos, se mostrará el siguiente DIV. -->
     <div *ngIf="filtrarViajes().length === 0" class="d-flex justify-content-center align-items-center">
         <div style="text-align: center;">
             <h2 class="mt-3">Sin datos</h2>
             <p style="min-height: 115px; text-align: justify;">La información introducida en el filtro no ha retornado datos.</p>
         </div>
     </div>
-    
 </div>
 
 
