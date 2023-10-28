@@ -13,9 +13,12 @@ export class DaysComponent implements OnInit {
   filtroDia: string = '';
   filtroCiudad: string = '';
   detalleViaje: any | null = null;
-
-  constructor(private viajeService: ViajeService) { }
   viajeData: ViajeData | undefined;
+  modal: DetailComponent | undefined;
+
+  constructor(private viajeService: ViajeService) {
+    this.modal = new DetailComponent();
+  }
 
   ngOnInit(): void {
     this.viajeService.getViaje().subscribe(data => {
@@ -34,14 +37,7 @@ export class DaysComponent implements OnInit {
     return data.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase();
   }
 
-  openModal(viaje: any) {
-    const modal = document.querySelector('#modal-viaje-' + viaje.id);
-    modal?.classList.add('show');
-    modal?.setAttribute('style', 'display: flex');
-
-    let videoElement: HTMLVideoElement | null = document.querySelector('#modal-viaje-'+viaje.id+' video');
-    if (videoElement) {
-      videoElement.src = viaje.video;
-    }
+  openModal(componentId: String, viaje: any) {
+    this.modal?.openModal(componentId,viaje)
   }
 }

@@ -29,11 +29,11 @@
                 <p style="font-style: italic;">{{ viaje.dia }}</p>
                 <p style="min-height: 115px; text-align: justify;">{{ viaje.descripcion }}</p>
                 <div style="width: 100%; text-align: center;">
-                    <button class="btn-like-link" (click)="openModal(viaje)">Ver detalles</button>
+                    <button class="btn-like-link" (click)="openModal('daysId',viaje)">Ver detalles</button>
                 </div>
 
                 <!-- Utilizo el componente DetailComponent en lugar del modal -->
-                <app-detail [viaje]="viaje" *ngIf="viaje"></app-detail>
+                <app-detail [componentId]="'daysId'" [viaje]="viaje" *ngIf="viaje"></app-detail>
             </div>
         </div>
     </div>
