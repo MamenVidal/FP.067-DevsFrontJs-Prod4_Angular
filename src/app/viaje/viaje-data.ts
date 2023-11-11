@@ -1,7 +1,3 @@
-export interface ViajeData {
-  MiViaje: DiaViaje[];
-}
-  
 export interface DiaViaje {
   id: number;
   dia: string;

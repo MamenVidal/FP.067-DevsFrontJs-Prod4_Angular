@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ViajeService } from '../viaje/viaje.service';
-import { ViajeData } from '../viaje/viaje-data';
+import { DiaViaje } from '../viaje/viaje-data';
 import { DetailComponent } from '../detail/detail.component';
 
 @Component({
@@ -13,7 +13,7 @@ export class DaysComponent implements OnInit {
   filtroDia: string = '';
   filtroCiudad: string = '';
   detalleViaje: any | null = null;
-  viajeData: ViajeData | undefined;
+  viajeData: DiaViaje[] | undefined;
   modal: DetailComponent | undefined;
 
   constructor(private viajeService: ViajeService) {
@@ -22,7 +22,7 @@ export class DaysComponent implements OnInit {
 
   ngOnInit(): void {
     this.viajeService.getViaje().subscribe(data => {
-      this.viajes = data.MiViaje;
+      this.viajes = data;
     });
   }
 
@@ -33,10 +33,13 @@ export class DaysComponent implements OnInit {
     });
   }  
 
-  normalizeStr(data: string): string {
+  normalizeStr(data: string | null | undefined): string {
+    if (data == null || data === undefined) {
+      return '';
+    }
     return data.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase();
   }
-
+  
   openModal(componentId: String, viaje: any) {
     this.modal?.openModal(componentId,viaje)
   }

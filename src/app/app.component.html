@@ -11,10 +11,10 @@
 <main>
   <div id="carouselTitulo" class="carousel slide" data-bs-ride="carousel">
     <div class="carousel-indicators">
-      <button *ngFor="let dia of viajeData?.MiViaje; let i = index" [class.active]="i === 0" [attr.data-bs-target]="'#carouselTitulo'" [attr.data-bs-slide-to]="i" aria-current="true"></button>
+      <button *ngFor="let dia of viajeData; let i = index" [class.active]="i === 0" [attr.data-bs-target]="'#carouselTitulo'" [attr.data-bs-slide-to]="i" aria-current="true"></button>
     </div>
     <div class="carousel-inner">
-      <div class="carousel-item" *ngFor="let dia of viajeData?.MiViaje; let i = index" [class.active]="i === 0" [style.background-image]="'url(' + dia.imagen + ')'" style="background-size: cover; background-position: center;">
+      <div class="carousel-item" *ngFor="let dia of viajeData; let i = index" [class.active]="i === 0" [style.background-image]="'url(' + dia.imagen + ')'" style="background-size: cover; background-position: center;">
         <div class="container">
           <div class="carousel-caption">
             <h1>{{ dia.dia }}</h1>

@@ -1,14 +1,20 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { FormsModule } from '@angular/forms';
 
-import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { DaysComponent } from './days/days.component';
 import { DetailComponent } from './detail/detail.component';
 import { PlayerComponent } from './player/player.component';
+import { FormsModule } from '@angular/forms';
+import { AppRoutingModule } from './app-routing.module';
+
+// importamos elementos y configuración de Firebase
+import { provideFirebaseApp, getApp, initializeApp } from '@angular/fire/app';
+import { getFirestore, provideFirestore } from '@angular/fire/firestore';
+import { environment } from '../environments/environment';
 
 @NgModule({
+  bootstrap: [AppComponent],
   declarations: [
     AppComponent,
     DaysComponent,
@@ -16,11 +22,12 @@ import { PlayerComponent } from './player/player.component';
     PlayerComponent
   ],
   imports: [
+    FormsModule,
     BrowserModule,
     AppRoutingModule,
-    FormsModule
+    // creamos la aplicaciónd e firebase con nuestra configuración
+    provideFirebaseApp(() => initializeApp(environment.firebase)),
+    provideFirestore(() => getFirestore()),
   ],
-  providers: [],
-  bootstrap: [AppComponent]
 })
 export class AppModule { }

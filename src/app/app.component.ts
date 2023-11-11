@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ViajeService } from './viaje/viaje.service';
-import { ViajeData, DiaViaje } from './viaje/viaje-data';
+import { DiaViaje } from './viaje/viaje-data';
 import { DetailComponent } from './detail/detail.component';
 
 @Component({
@@ -10,7 +10,7 @@ import { DetailComponent } from './detail/detail.component';
 })
 export class AppComponent implements OnInit {
   title = 'FP.067-DevsFrontJs-Prod1';
-  viajeData: ViajeData | undefined;
+  viajeData: DiaViaje[] | undefined;
   viaje: DiaViaje | undefined;
   modal: DetailComponent | undefined;
   
