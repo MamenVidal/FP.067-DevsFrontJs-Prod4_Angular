@@ -9,7 +9,7 @@ import { DetailComponent } from './detail/detail.component';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit {
-  title = 'FP.067-DevsFrontJs-Prod1';
+  title = 'FP.067-DevsFrontJs-Prod2';
   viajeData: ViajeData | undefined;
   viaje: DiaViaje | undefined;
   modal: DetailComponent | undefined;
