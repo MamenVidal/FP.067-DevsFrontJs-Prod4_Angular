@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "FP.067-DevsFrontJs-Prod1": {
+    "FP.067-DevsFrontJs-Prod2": {
       "projectType": "application",
       "schematics": {},
       "root": "",
@@ -13,7 +13,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/fp.067-devs-front-js-prod1",
+            "outputPath": "dist/fp.067-devs-front-js-prod2",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": [
@@ -63,10 +63,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "FP.067-DevsFrontJs-Prod1:build:production"
+              "browserTarget": "FP.067-DevsFrontJs-Prod2:build:production"
             },
             "development": {
-              "browserTarget": "FP.067-DevsFrontJs-Prod1:build:development"
+              "browserTarget": "FP.067-DevsFrontJs-Prod2:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -74,7 +74,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "FP.067-DevsFrontJs-Prod1:build"
+            "browserTarget": "FP.067-DevsFrontJs-Prod2:build"
           }
         },
         "test": {

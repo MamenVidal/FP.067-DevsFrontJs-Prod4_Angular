@@ -8,7 +8,7 @@ import { PlayerComponent } from './player/player.component';
 import { FormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 
-// importamos elementos y configuración de Firebase
+// Importamos elementos y configuración de Firebase
 import { provideFirebaseApp, getApp, initializeApp } from '@angular/fire/app';
 import { getFirestore, provideFirestore } from '@angular/fire/firestore';
 import { environment } from '../environments/environment';
@@ -25,9 +25,10 @@ import { environment } from '../environments/environment';
     FormsModule,
     BrowserModule,
     AppRoutingModule,
-    // creamos la aplicaciónd e firebase con nuestra configuración
+    // Creamos la aplicacióncde Firebase con nuestra configuración
     provideFirebaseApp(() => initializeApp(environment.firebase)),
     provideFirestore(() => getFirestore()),
   ],
 })
+
 export class AppModule { }
