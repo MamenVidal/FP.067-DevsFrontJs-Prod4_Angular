@@ -22,14 +22,15 @@
     <div class="container marketing mt-5">
         <div class="row">
             <div class="col-lg-4 mb-5 DaysComponent" *ngFor="let viaje of filtrarViajes()">
-                <div style="width: 100%; text-align: center;">
+                <div style="width: 100%; text-align: center; position: relative;">
                     <img class="bd-placeholder-img rounded-circle" width="140" height="140" src="{{ viaje.imagen }}" />
+                    <button class="btn btn-danger" (click)="eliminarViaje(viaje)"><i class="fa fa-trash"></i></button>
                 </div>
                 <h2 class="mt-3">{{ viaje.nombre }}</h2>
                 <p style="font-style: italic;">{{ viaje.dia }}</p>
                 <p style="min-height: 115px; text-align: justify;">{{ viaje.descripcion }}</p>
                 <div style="width: 100%; text-align: center;">
-                    <button class="btn-like-link" (click)="openModal('daysId',viaje)">Ver detalles</button>
+                    <button class="btn btn-primary btn-like-link" (click)="openModal('daysId',viaje)">Ver detalles</button>
                 </div>
 
                 <!-- Utilizo el componente DetailComponent en lugar del modal -->

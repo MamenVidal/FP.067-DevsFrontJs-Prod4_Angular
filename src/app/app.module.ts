@@ -10,7 +10,9 @@ import { AppRoutingModule } from './app-routing.module';
 
 // Importamos elementos y configuración de Firebase
 import { provideFirebaseApp, getApp, initializeApp } from '@angular/fire/app';
-import { getFirestore, provideFirestore } from '@angular/fire/firestore';
+import { getFirestore, provideFirestore, Firestore } from '@angular/fire/firestore';
+
+import { FirebaseService } from './firebase/firebase.service';
 import { environment } from '../environments/environment';
 
 @NgModule({
@@ -29,6 +31,9 @@ import { environment } from '../environments/environment';
     provideFirebaseApp(() => initializeApp(environment.firebase)),
     provideFirestore(() => getFirestore()),
   ],
+  // providers: [
+  //   FirebaseService
+  // ],
 })
 
 export class AppModule { }
