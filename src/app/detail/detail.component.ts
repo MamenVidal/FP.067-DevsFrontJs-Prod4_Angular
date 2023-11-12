@@ -14,23 +14,23 @@ export class DetailComponent implements OnInit {
   ngOnInit(): void {}
   
   openModal(componentId: String, viaje: any) {
-    const modal = document.querySelector('#modal-viaje-' + componentId + '-' + viaje.id);
+    const modal = document.querySelector('#modal-viaje-' + componentId + '-' + viaje.codigo);
     modal?.classList.add('show');
     modal?.setAttribute('style', 'display: flex');
 
-    let videoElement: HTMLVideoElement | null = document.querySelector('#modal-viaje-'+viaje.id+' video');
+    let videoElement: HTMLVideoElement | null = document.querySelector('#modal-viaje-'+viaje.codigo+' video');
     if (videoElement) {
       videoElement.src = viaje.video;
     }
   }
 
   closeModal(viaje: any) {
-    const modal = document.querySelector('#modal-viaje-'+this.componentId+'-'+viaje.id);
+    const modal = document.querySelector('#modal-viaje-'+this.componentId+'-'+viaje.codigo);
     modal?.classList.remove('show');
     modal?.setAttribute('style', 'display: none');
 
     // Pausar el video cuando el modal se cierra
-    let videoElement: HTMLVideoElement | null = document.querySelector('#modal-viaje-'+this.componentId+'-'+viaje.id+' video');
+    let videoElement: HTMLVideoElement | null = document.querySelector('#modal-viaje-'+this.componentId+'-'+viaje.codigo+' video');
     if (videoElement) {
       videoElement.pause();
     }

@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ViajeService } from '../viaje/viaje.service';
 import { DiaViaje } from '../viaje/viaje-data';
 import { DetailComponent } from '../detail/detail.component';
-import { FirebaseService } from '../firebase/firebase.service';
+import { NotifierService } from 'angular-notifier';
 
 @Component({
   selector: 'app-days',
@@ -17,8 +17,11 @@ export class DaysComponent implements OnInit {
   viajeData: DiaViaje[] | undefined;
   modal: DetailComponent | undefined;
 
-  constructor(private viajeService: ViajeService) {
+  constructor(private viajeService: ViajeService
+            , private notifier: NotifierService
+             ) {
     this.modal = new DetailComponent();
+    this.notifier = notifier;
   }
   
   ngOnInit(): void {
@@ -44,15 +47,35 @@ export class DaysComponent implements OnInit {
   openModal(componentId: String, viaje: any) {
     this.modal?.openModal(componentId,viaje)
   }
+
+  mostrarNotificacion(tipo: string, mensaje: string): void {
+    this.notifier.notify(tipo, mensaje);
+  }
   
   eliminarViaje(viaje : any) {
     const index = this.viajes.indexOf(viaje);
     if (index !== -1) {
-      const id = viaje.id;
-      // Eliminar localmente
-      this.viajes.splice(index, 1);
-      // Eliminar en Firebase, fuerzo la eliminación del ID 11 para no borrar datos "buenos"...
-      // this.firebaseService.eliminarViaje('11');
+      const id = viaje.codigo;
+      // Eliminar en Firebase
+      this.viajeService.eliminaViaje(viaje)
+        .then((resultado: boolean) => {
+          if (resultado) {
+            // Eliminar localmente
+            this.mostrarNotificacion('success', 'Elemento eliminado correctamente');
+            this.viajes.splice(index, 1);
+          } else {
+            if (viaje.codigo > 10) { // TODO Eliminaremos esta comprobación al subir el proyecto a producción
+              this.mostrarNotificacion('error', 'Error al eliminar el elemento');
+            } else {
+              this.mostrarNotificacion('error', 'De momento no permitimos borrar elementos del 1 al 10'); 
+            }
+          }
+        })
+        .catch((error: any) => {
+          this.mostrarNotificacion('error', 'Error inesperado al eliminar el elemento');
+          console.error("Error inesperado: ", error);
+        });
     }
   }
+  
 }

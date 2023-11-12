@@ -8,6 +8,8 @@
   </nav>
 </header>
 
+<notifier-container></notifier-container>
+
 <main>
   <div id="carouselTitulo" class="carousel slide" data-bs-ride="carousel">
     <div class="carousel-indicators">
@@ -23,9 +25,7 @@
           </div>
         </div>
         
-        <!-- Utilizo el componente DetailComponent en lugar del modal -->
         <app-detail [componentId]="'carouselId'" [viaje]="dia" *ngIf="dia"></app-detail>
-        <!-- <app-detail [viaje]="viaje" *ngIf="viaje"></app-detail> -->
       </div>
     </div>
     <a class="carousel-control-prev" href="#carouselTitulo" role="button" data-bs-slide="prev">

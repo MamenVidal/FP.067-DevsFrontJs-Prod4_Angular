@@ -1,7 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
 import { ViajeService } from './viaje/viaje.service';
 import { DiaViaje } from './viaje/viaje-data';
 import { DetailComponent } from './detail/detail.component';
+import { Firestore } from '@angular/fire/firestore';
+import { NotifierService } from 'angular-notifier';
 
 @Component({
   selector: 'app-root',
@@ -13,9 +15,12 @@ export class AppComponent implements OnInit {
   viajeData: DiaViaje[] | undefined;
   viaje: DiaViaje | undefined;
   modal: DetailComponent | undefined;
+  firestore: Firestore = inject(Firestore);
+  private notifier: NotifierService;
   
-  constructor(private viajeService: ViajeService) {
+  constructor(private viajeService: ViajeService, notifier: NotifierService) {
     this.modal = new DetailComponent();
+    this.notifier = notifier;
   }
 
   ngOnInit(): void {
