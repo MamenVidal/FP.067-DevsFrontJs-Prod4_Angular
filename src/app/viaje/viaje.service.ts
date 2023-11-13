@@ -1,27 +1,42 @@
 import { Injectable } from '@angular/core';
-import { Firestore, collectionData, collection, query, orderBy, deleteDoc, getFirestore, doc, where, getDocs } from '@angular/fire/firestore';
+import {
+  Firestore,
+  collectionData,
+  collection,
+  query,
+  orderBy,
+  deleteDoc,
+  getFirestore,
+  doc,
+  where,
+  getDocs,
+  addDoc,
+} from '@angular/fire/firestore';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { DiaViaje } from './viaje-data';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class ViajeService {
-  
   item$: Observable<DiaViaje[]>;
   items: DiaViaje[] = [];
-  
-  constructor( public firestore: Firestore ) {
+
+  constructor(public firestore: Firestore) {
     // Obtenemos nuestra colección de viajes desde firebase
     const itemCollection = collection(this.firestore, 'MiViaje');
 
     // Usamos la consulta en collectionData, aplicando la ordenación por el campo deseado (por ejemplo, 'codigo')
-    const resultados = collectionData(query(itemCollection, orderBy('codigo')), { idField: 'id' });
+    const resultados = collectionData(
+      query(itemCollection, orderBy('codigo')),
+      { idField: 'id' }
+    );
 
     // Mapeamos los campos de cada viaje a nuestra interfaz DiaViaje
     this.item$ = resultados.pipe(
-        map(items => items.map(item => {
+      map((items) =>
+        items.map((item) => {
           const data = item as any;
           return {
             id: data.id,
@@ -33,17 +48,18 @@ export class ViajeService {
             actividades: data.actividades,
             descripcion: data.descripcion,
             video: data.video,
-            imagen: data.imagen
+            imagen: data.imagen,
           } as DiaViaje;
-        }))
-      );
+        })
+      )
+    );
   }
 
   /*
-  * modificamos getViaje para que sea Observable de DiaViaje[]
-  * ViajeData deprecado, es reemplazado por DiaViaje[] en todos los componentes
-  * !TODO eliminar archivo assets/database/db.json
-  */
+   * modificamos getViaje para que sea Observable de DiaViaje[]
+   * ViajeData deprecado, es reemplazado por DiaViaje[] en todos los componentes
+   * !TODO eliminar archivo assets/database/db.json
+   */
   getViaje(): Observable<DiaViaje[]> {
     return this.item$;
   }
@@ -51,20 +67,21 @@ export class ViajeService {
   async eliminaViaje(viaje: DiaViaje): Promise<boolean> {
     const id = viaje.codigo;
     const viajeCollectionRef = collection(this.firestore, 'MiViaje');
-  
+
     try {
-      if (id > 10) { // TODO Eliminaremos esta comprobación al subir el proyecto a producción
+      if (id > 10) {
+        // TODO Eliminaremos esta comprobación al subir el proyecto a producción
         // Consulta para obtener el documento basado en el campo y valor proporcionados
         const q = query(viajeCollectionRef, where('codigo', '==', id));
         const querySnapshot = await getDocs(q);
-  
+
         for (const document of querySnapshot.docs) {
           const viajeDocRef = doc(this.firestore, 'MiViaje', document.id);
           // Elimina el documento correspondiente al código encontrado
           await deleteDoc(viajeDocRef);
           console.log('Documento eliminado exitosamente en Firebase');
         }
-  
+
         return true;
       } else {
         return false;
@@ -75,4 +92,31 @@ export class ViajeService {
     }
   }
 
+  async addViaje(nuevoViaje: DiaViaje): Promise<boolean> {
+    const viajeCollectionRef = collection(this.firestore, 'MiViaje');
+    try {
+      const viajeCollectionRef = collection(this.firestore, 'MiViaje');
+
+      const nuevoViajeDocRef = await addDoc(viajeCollectionRef, {
+        // El id se genera solo
+        codigo: nuevoViaje.codigo,
+        dia: nuevoViaje.dia,
+        nombre: nuevoViaje.nombre,
+        ciudad: nuevoViaje.ciudad,
+        alojamiento: nuevoViaje.alojamiento,
+        actividades: nuevoViaje.actividades,
+        descripcion: nuevoViaje.descripcion,
+        video: nuevoViaje.video,
+        imagen: nuevoViaje.imagen,
+      });
+      console.log(
+        'Nuevo viaje agregado exitosamente en Firebase con ID:',
+        nuevoViajeDocRef.id
+      );
+      return true;
+    } catch (error) {
+      console.error('Error al agregar el nuevo viaje en Firebase: ', error);
+      return false;
+    }
+  }
 }

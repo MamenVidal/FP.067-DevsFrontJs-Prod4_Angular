@@ -17,6 +17,18 @@
             <label>Ciudad</label>
             <input [(ngModel)]="filtroCiudad" type="text" class="form-control" placeholder="Madrid, Barcelona, Valencia, ..." size="40px">
         </div>
+        <form [formGroup]="formularioViaje" (ngSubmit)="onSubmit()">
+            <label for="codigo">Código:</label>
+            <input type="text" id="codigo" formControlName="codigo" required>
+          
+            <label for="dia">Día:</label>
+            <input type="text" id="dia" formControlName="dia" required>
+          
+            <!-- Otros campos del formulario -->
+          
+            <button type="submit">Agregar Viaje</button>
+          </form>
+          
     </div>
      <!-- Listado de días que cumplen con el filtro. De inicio se mostrarán todos. --> 
     <div class="container marketing mt-5">
