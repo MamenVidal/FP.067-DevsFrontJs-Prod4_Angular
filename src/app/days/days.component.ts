@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild, inject } from '@angular/core';
 import { ViajeService } from '../viaje/viaje.service';
 import { DiaViaje } from '../viaje/viaje-data';
 import { DetailComponent } from '../detail/detail.component';
@@ -17,15 +17,17 @@ export class DaysComponent implements OnInit {
   filtroCiudad: string = '';
   detalleViaje: any | null = null;
   viajeData: DiaViaje[] | undefined;
-  modal: DetailComponent | undefined;
   formularioViaje: FormGroup;
+
+  // Añadir ViewChild para obtener referencia a DetailComponent
+  @ViewChild(DetailComponent)
+  modal!: DetailComponent;
 
   constructor(
     private viajeService: ViajeService,
     private notifier: NotifierService,
     private formBuilder: FormBuilder
   ) {
-    this.modal = new DetailComponent();
     this.notifier = notifier;
     this.formularioViaje = this.formBuilder.group({
       codigo: '',

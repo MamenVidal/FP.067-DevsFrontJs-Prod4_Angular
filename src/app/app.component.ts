@@ -1,4 +1,4 @@
-import { Component, OnInit, inject } from '@angular/core';
+import { Component, OnInit, ViewChild, inject } from '@angular/core';
 import { ViajeService } from './viaje/viaje.service';
 import { DiaViaje } from './viaje/viaje-data';
 import { DetailComponent } from './detail/detail.component';
@@ -14,12 +14,14 @@ export class AppComponent implements OnInit {
   title = 'FP.067-DevsFrontJs-Prod2';
   viajeData: DiaViaje[] | undefined;
   viaje: DiaViaje | undefined;
-  modal: DetailComponent | undefined;
   firestore: Firestore = inject(Firestore);
   private notifier: NotifierService;
 
+  // Añadir ViewChild para obtener referencia a DetailComponent
+  @ViewChild(DetailComponent)
+  modal!: DetailComponent;
+
   constructor(private viajeService: ViajeService, notifier: NotifierService) {
-    this.modal = new DetailComponent();
     this.notifier = notifier;
   }
 
@@ -30,6 +32,7 @@ export class AppComponent implements OnInit {
   }
 
   openModal(componentId: String, viaje: any) {
+    // Usar la referencia a DetailComponent para abrir el modal
     this.modal?.openModal(componentId, viaje);
   }
 }
