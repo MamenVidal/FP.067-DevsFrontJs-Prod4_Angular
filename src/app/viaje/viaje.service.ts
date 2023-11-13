@@ -11,6 +11,7 @@ import {
   where,
   getDocs,
   addDoc,
+  setDoc,
 } from '@angular/fire/firestore';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
@@ -119,4 +120,10 @@ export class ViajeService {
       return false;
     }
   }
+
+  async actualizaViaje(id: string, data: DiaViaje): Promise<void> {
+    const viajeDocRef = doc(this.firestore, 'MiViaje', id);
+    await setDoc(viajeDocRef, data, { merge: true });
+  }
+
 }
