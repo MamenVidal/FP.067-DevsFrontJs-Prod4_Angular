@@ -1,6 +1,7 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { ViajeService } from '../viaje/viaje.service';
+import { NotifierService } from 'angular-notifier';
 
 @Component({
   selector: 'app-detail',
@@ -14,7 +15,11 @@ export class DetailComponent implements OnInit {
 
   editForm: FormGroup;
 
-  constructor(private viajeService: ViajeService) {
+  constructor(
+    private notifier: NotifierService,
+    private viajeService: ViajeService
+  ) {
+    this.notifier = notifier;
     this.editForm = new FormGroup({
       nombre: new FormControl('', Validators.required),
       ciudad: new FormControl('', Validators.required),
@@ -70,10 +75,16 @@ export class DetailComponent implements OnInit {
     const updatedData = this.editForm.value;
     try {
       await this.viajeService.actualizaViaje(this.viaje.id, updatedData);
-      console.log('Viaje actualizado con éxito');
+      console.log('Día actualizado con éxito');
+      this.mostrarNotificacion('success', 'Día actualizado con éxito');
     } catch (error) {
-      console.error('Error al actualizar el viaje: ', error);
+      console.error('Error al actualizar el día: ', error);
+      this.mostrarNotificacion('error', 'Día actualizado con éxito');
     }
+  }
+
+  mostrarNotificacion(tipo: string, mensaje: string): void {
+    this.notifier.notify(tipo, mensaje);
   }
   
 }
