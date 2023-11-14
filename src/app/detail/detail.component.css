@@ -23,6 +23,7 @@
     background-color: #fff;
     padding: 20px;
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
+    width: 950px;
     max-width: 950px;
     text-align: center;
     display: flex;
@@ -33,6 +34,14 @@
     width: 100%;
     flex: 100%;
     margin-bottom: 15px;
+} 
+
+.modal-content-title h2 input {
+    text-align: center; 
+    width: 500px; 
+    margin: auto; 
+    font-size: xx-large; 
+    font-weight: 400;
 }
 
 .modal-content-details {
@@ -63,22 +72,21 @@
 .modal-content-video > p {
   line-height: 20px;
 }
-  
-button {
-    background-color: #007BFF;
-    color: #fff;
-    border: none;
-    padding: 10px 20px;
-    margin-top: 20px;
-    border-radius: 5px;
-    cursor: pointer;
-    width: 235px;
-    margin: auto;
-    margin-top: 25px;
+
+.detail-botones {
+    margin-top: 15px;
+    width: auto;
 }
-  
-button:hover {
-    background-color: #0056b3;
+
+.detail-botones button {
+    width: 250px;
+    margin: 10px;
+    height: 44px;
+}
+
+.detail-botones button i {
+    font-size: large;
+    margin-right: 10px;
 }
 
 .bold {
@@ -102,4 +110,12 @@ li {
 
 .details-r {
     text-align: right;
+}
+
+.modal-content-detail .row {
+    margin-bottom: 15px;
+}
+
+ul {
+    margin-bottom: 0px;
 }

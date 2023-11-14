@@ -149,3 +149,13 @@ body {
   button.btn-primary:hover {
     background-color: #0056b3;
   } 
+
+  .carousel-caption button {
+    width: 235px; 
+    font-size: medium;
+  }
+
+  .carousel-caption button i {
+      font-size: large;
+      margin-right: 10px;
+  }

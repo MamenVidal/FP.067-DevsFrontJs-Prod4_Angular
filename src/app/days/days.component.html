@@ -36,7 +36,7 @@
                 <p style="font-style: italic;">{{ viaje.dia }}</p>
                 <p style="min-height: 115px; text-align: justify;">{{ viaje.descripcion }}</p>
                 <div style="width: 100%; text-align: center;">
-                    <button class="btn btn-primary btn-like-link" (click)="openModal('daysId',viaje)">Ver detalles</button>
+                    <button class="btn btn-primary btn-like-link day-botones" (click)="openModal('daysId',viaje)"><i class="fa fa-search"></i>Ver detalles</button>
                 </div>
 
                 <!-- Utilizo el componente DetailComponent en lugar del modal -->

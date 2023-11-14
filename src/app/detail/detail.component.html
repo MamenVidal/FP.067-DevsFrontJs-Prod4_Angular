@@ -2,19 +2,41 @@
     <form [formGroup]="editForm">
         <div class="modal-content">
             <div class="modal-content-title">
-                <h2><input type="text" formControlName="nombre"></h2>
+                <h2><input type="text" class="form-control" formControlName="nombre"></h2>
             </div>
             <div class="modal-content-details">
                 <div class="modal-content-detail">
                     <p class="details details-l">Detalles</p>
-                    <p><span class="bold">Día:</span> <input type="text" formControlName="dia"></p>
-                    <p><span class="bold">Ciudad:</span> <input type="text" formControlName="ciudad"></p>
-                    <p><span class="bold">Alojamiento:</span> <input type="text" formControlName="alojamiento"></p>
-                    <p><input type="text" formControlName="descripcion"></p>
-                    <span class="bold">Actividades del día:</span>
-                    <ul class="fa-ul" style="--fa-li-margin: 1em;">
-                    <li *ngFor="let actividad of viaje.actividades"><span class="fa-li"><i class="fa-solid fa-check-square"></i></span>{{ actividad }}</li>
-                    </ul>
+                    <div class="row">
+                        <div class="col">
+                            <label class="bold">Día</label>
+                            <input type="text" class="form-control" formControlName="dia">
+                        </div>
+                        <div class="col">
+                            <label class="bold">Ciudad</label>
+                            <input type="text" class="form-control" formControlName="ciudad">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <label class="bold">Alojamiento</label>
+                            <input type="text" class="form-control" formControlName="alojamiento">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <label class="bold">Resumen</label>
+                            <textarea type="text" class="form-control" formControlName="descripcion" rows="5" style="resize: none;"></textarea>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <label class="bold">Actividades del día</label>
+                            <ul class="fa-ul" style="--fa-li-margin: 1em;">
+                                <li *ngFor="let actividad of viaje.actividades"><span class="fa-li"><i class="fa-solid fa-check-square"></i></span>{{ actividad }}</li>
+                            </ul>
+                        </div>
+                    </div>
                 </div>
                 <div class="modal-content-video">
                     <p class="details details-r">Vídeo</p>
@@ -22,9 +44,10 @@
                     <p *ngIf="!viaje.video">Lamentablemente no tenemos un vídeo para este día.</p>
                 </div>
             </div>
-            <div><button (click)="updateViaje()">Guardar Cambios</button>
+            <div class="detail-botones">
+                <button type="button" class="btn btn-success" (click)="updateViaje()"><i class="fa fa-save"></i>Guardar</button>
+                <button type="button" class="btn btn-primary" (click)="closeModal(viaje)"><i class="fa fa-close"></i>Cerrar</button>
             </div>
-            <button (click)="closeModal(viaje)">Cerrar</button>
         </div>
     </form>
 </div>
