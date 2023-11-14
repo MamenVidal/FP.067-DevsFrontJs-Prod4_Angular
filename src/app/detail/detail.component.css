@@ -119,3 +119,8 @@ li {
 ul {
     margin-bottom: 0px;
 }
+
+input.ng-invalid.ng-touched {
+    border: 1px solid #ffb6b6;
+    background-color: #ffb6b666;
+}

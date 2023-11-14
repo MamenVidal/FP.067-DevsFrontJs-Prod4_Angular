@@ -1,5 +1,5 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import { FormGroup, FormControl } from '@angular/forms';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { ViajeService } from '../viaje/viaje.service';
 
 @Component({
@@ -16,12 +16,12 @@ export class DetailComponent implements OnInit {
 
   constructor(private viajeService: ViajeService) {
     this.editForm = new FormGroup({
-      nombre: new FormControl(''),
-      ciudad: new FormControl(''),
+      nombre: new FormControl('', Validators.required),
+      ciudad: new FormControl('', Validators.required),
+      dia: new FormControl('', Validators.required),
       alojamiento: new FormControl(''),
-      dia: new FormControl(''),
-      //actividades: new FormControl(this.viaje.actividades),
       descripcion: new FormControl(''),
+      //actividades: new FormControl(this.viaje.actividades),
       //video: new FormControl(this.viaje.video),
       //imagen: new FormControl(this.viaje.imagen),
     });
@@ -30,12 +30,12 @@ export class DetailComponent implements OnInit {
   ngOnInit(): void {
     if(this.viaje) {
       this.editForm = new FormGroup({
-        nombre: new FormControl(this.viaje.nombre),
-        ciudad: new FormControl(this.viaje.ciudad),
+        nombre: new FormControl(this.viaje.nombre, Validators.required),
+        ciudad: new FormControl(this.viaje.ciudad, Validators.required),
+        dia: new FormControl(this.viaje.dia, Validators.required),
         alojamiento: new FormControl(this.viaje.alojamiento),
-        dia: new FormControl(this.viaje.dia),
-        //actividades: new FormControl(this.viaje.actividades),
         descripcion: new FormControl(this.viaje.descripcion),
+        //actividades: new FormControl(this.viaje.actividades),
         //video: new FormControl(this.viaje.video),
         //imagen: new FormControl(this.viaje.imagen),
       });
@@ -65,7 +65,6 @@ export class DetailComponent implements OnInit {
     }
     this.closeModalEvent.emit();
   }
-
 
   async updateViaje() {
     const updatedData = this.editForm.value;
