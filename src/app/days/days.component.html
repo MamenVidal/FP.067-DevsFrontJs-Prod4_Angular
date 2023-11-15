@@ -1,9 +1,9 @@
 <div class="container days-container">
     <div class="d-flex" style="border: 0.1em solid rgb(222, 226, 230); padding: 15px; border-radius: 6px;">
-        <div class="days-filters d-flex align-items-center" style="width: 80%;">
+        <div class="days-filters d-flex align-items-center" style="width: 66%;">
             <div class="form-group days-filter">
                 <label>Día de la semana</label>
-                <select [(ngModel)]="filtroDia" class="form-select" placeholder="Selección">
+                <select [(ngModel)]="filtroDia" class="form-select" placeholder="Selección" style="width: 180px;">
                     <option [ngValue]="" selected></option>
                     <option value="lunes">Lunes</option>
                     <option value="martes">Martes</option>
@@ -19,7 +19,7 @@
                 <input [(ngModel)]="filtroCiudad" type="text" class="form-control" placeholder="Madrid, Barcelona, Valencia, ..." size="40px">
             </div>
         </div>
-        <div style="width: 20%; margin: auto;">
+        <div style="width: 33%; margin: auto;" class="text-end">
             <button type="button" class="btn btn-success day-botones" style="width: 235px;">
                 <i class="fa fa-plus"></i>Añadir día
             </button>
