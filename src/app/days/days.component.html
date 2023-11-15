@@ -1,28 +1,29 @@
 <div class="container days-container">
-    <div class="days-filters d-flex align-items-center" style="border: 0.1em solid rgb(222, 226, 230); padding: 15px; border-radius: 6px;">
-        <div class="form-group days-filter">
-            <label>Día de la semana</label>
-            <select [(ngModel)]="filtroDia" class="form-select" placeholder="Selección">
-                <option [ngValue]="" selected></option>
-                <option value="lunes">Lunes</option>
-                <option value="martes">Martes</option>
-                <option value="miercoles">Miércoles</option>
-                <option value="jueves">Jueves</option>
-                <option value="viernes">Viernes</option>
-                <option value="sabado">Sábado</option>
-                <option value="domingo">Domingo</option>
-            </select>
+    <div class="d-flex" style="border: 0.1em solid rgb(222, 226, 230); padding: 15px; border-radius: 6px;">
+        <div class="days-filters d-flex align-items-center" style="width: 80%;">
+            <div class="form-group days-filter">
+                <label>Día de la semana</label>
+                <select [(ngModel)]="filtroDia" class="form-select" placeholder="Selección">
+                    <option [ngValue]="" selected></option>
+                    <option value="lunes">Lunes</option>
+                    <option value="martes">Martes</option>
+                    <option value="miercoles">Miércoles</option>
+                    <option value="jueves">Jueves</option>
+                    <option value="viernes">Viernes</option>
+                    <option value="sabado">Sábado</option>
+                    <option value="domingo">Domingo</option>
+                </select>
+            </div>
+            <div class="form-group days-filter">
+                <label>Ciudad</label>
+                <input [(ngModel)]="filtroCiudad" type="text" class="form-control" placeholder="Madrid, Barcelona, Valencia, ..." size="40px">
+            </div>
         </div>
-        <div class="form-group days-filter">
-            <label>Ciudad</label>
-            <input [(ngModel)]="filtroCiudad" type="text" class="form-control" placeholder="Madrid, Barcelona, Valencia, ..." size="40px">
+        <div style="width: 20%; margin: auto;">
+            <button type="button" class="btn btn-success day-botones" style="width: 235px;">
+                <i class="fa fa-plus"></i>Añadir día
+            </button>
         </div>
-
-          <!-- Button trigger modal -->
-        <button type="button" class="btn btn-success" data-toggle="modal" data-target="#exampleModal">
-            <i class="fa fa-plus"></i>
-        </button>
-          
     </div>
      <!-- Listado de días que cumplen con el filtro. De inicio se mostrarán todos. --> 
     <div class="container marketing mt-5">
