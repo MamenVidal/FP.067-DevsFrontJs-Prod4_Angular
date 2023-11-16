@@ -47,10 +47,15 @@
                         </div>
                     </div>
                 </div>
+                <div class="modal-content-imagen">
+                    <img class="bd-placeholder-img rounded-circle" width="140" height="140" src="{{ viaje.imagen }}" />
+                    <input type="file" (change)="onFileSelected($event, 'imagen')" accept="image/*">
+                </div>
                 <div class="modal-content-video">
                     <p class="details details-r">Vídeo</p>
                     <app-player *ngIf="viaje.video" [videoSrc]="viaje.video"></app-player>
                     <p *ngIf="!viaje.video">Lamentablemente no tenemos un vídeo para este día.</p>
+                    <input type="file" (change)="onFileSelected($event, 'video')" accept="video/*">
                 </div>
             </div>
             <div class="detail-botones">

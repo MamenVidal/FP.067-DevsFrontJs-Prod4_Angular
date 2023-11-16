@@ -16,6 +16,8 @@ import {
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { DiaViaje } from './viaje-data';
+import { Storage, UploadTask, ref, uploadBytesResumable, uploadBytes, getDownloadURL, getStorage } from '@angular/fire/storage';
+
 
 @Injectable({
   providedIn: 'root',
@@ -23,10 +25,13 @@ import { DiaViaje } from './viaje-data';
 export class ViajeService {
   item$: Observable<DiaViaje[]>;
   items: DiaViaje[] = [];
+  storage: Storage;
+  basepath = '/uploads';
 
-  constructor(public firestore: Firestore) {
+  constructor(public firestore: Firestore, storage: Storage) {
     // Obtenemos nuestra colección de viajes desde firebase
     const itemCollection = collection(this.firestore, 'MiViaje');
+    this.storage = storage;
 
     // Usamos la consulta en collectionData, aplicando la ordenación por el campo deseado (por ejemplo, 'codigo')
     const resultados = collectionData(
@@ -121,9 +126,43 @@ export class ViajeService {
     }
   }
 
-  async actualizaViaje(id: string, data: DiaViaje): Promise<void> {
+  actualizaViaje(id: string, data: DiaViaje) {
     const viajeDocRef = doc(this.firestore, 'MiViaje', id);
-    await setDoc(viajeDocRef, data, { merge: true });
+    setDoc(viajeDocRef, data, { merge: true });
   }
+
+  onFileChange(event: any): Promise<string> {
+    return new Promise((resolve, reject) => {
+      if (event.target.files.length > 0) {
+        const file = event.target.files[0];
+        const filePath = `uploads/${file.name}`;
+  
+        if (file.size > 52428800) { // 50MB
+          reject('File is too large!');
+        } else {
+          try {
+            const storageRef = ref(this.storage, filePath);
+            const uploadTask = uploadBytes(storageRef, file);
+  
+            uploadTask.then((snapshot) => {
+              getDownloadURL(snapshot.ref).then((url) => {
+                console.log(`Download URL: ${url}`);
+                resolve(url);
+              }).catch((error) => {
+                reject(`Error getting download URL: ${error}`);
+              });
+            }).catch((error) => {
+              reject(`Error uploading file: ${error}`);
+            });
+          } catch (e) {
+            reject(`Error: ${e}`);
+          }
+        }
+      } else {
+        reject('No file selected');
+      }
+    });
+  }
+  
 
 }

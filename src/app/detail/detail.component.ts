@@ -27,8 +27,8 @@ export class DetailComponent implements OnInit {
       alojamiento: new FormControl(''),
       descripcion: new FormControl(''),
       //actividades: new FormControl(this.viaje.actividades),
-      //video: new FormControl(this.viaje.video),
-      //imagen: new FormControl(this.viaje.imagen),
+      video: new FormControl(''),
+      imagen: new FormControl(''),
     });
   }
 
@@ -41,8 +41,8 @@ export class DetailComponent implements OnInit {
         alojamiento: new FormControl(this.viaje.alojamiento),
         descripcion: new FormControl(this.viaje.descripcion),
         //actividades: new FormControl(this.viaje.actividades),
-        //video: new FormControl(this.viaje.video),
-        //imagen: new FormControl(this.viaje.imagen),
+        video: new FormControl(this.viaje.video),
+        imagen: new FormControl(this.viaje.imagen),
       });
     }
   }
@@ -71,10 +71,10 @@ export class DetailComponent implements OnInit {
     this.closeModalEvent.emit();
   }
 
-  async updateViaje() {
+  updateViaje() {
     const updatedData = this.editForm.value;
     try {
-      await this.viajeService.actualizaViaje(this.viaje.id, updatedData);
+      this.viajeService.actualizaViaje(this.viaje.id, updatedData);
       console.log('Día actualizado con éxito');
       this.mostrarNotificacion('success', 'Día actualizado con éxito');
     } catch (error) {
@@ -86,5 +86,20 @@ export class DetailComponent implements OnInit {
   mostrarNotificacion(tipo: string, mensaje: string): void {
     this.notifier.notify(tipo, mensaje);
   }
+
+  onFileSelected(event: any, fileType: 'imagen' | 'video') {
+    if (event.target.files.length > 0) {
+      const file = event.target.files[0];
+      this.viajeService.onFileChange(event).then(url => {
+        // Actualiza el formulario con la URL del archivo subido
+        this.editForm.patchValue({ [fileType]: url });
+        this.mostrarNotificacion('success', 'Archivo subido con éxito');
+        this.updateViaje();
+      }).catch((error: any) => {
+        this.mostrarNotificacion('error', 'Error al subir archivo: '+error);
+      });
+    }
+  }
+  
   
 }
