@@ -99,7 +99,7 @@ export class DaysComponent implements OnInit {
               'success',
               'Elemento eliminado correctamente'
             );
-            this.viajes.splice(index, 1);
+            //this.viajes.splice(index, 1);
           } else {
             if (viaje.codigo > 10) {
               // TODO Eliminaremos esta comprobación al subir el proyecto a producción
@@ -123,6 +123,7 @@ export class DaysComponent implements OnInit {
           console.error('Error inesperado: ', error);
         });
     }
+    this.refresh();
   }
 
   getRandomInt(max: number) {
