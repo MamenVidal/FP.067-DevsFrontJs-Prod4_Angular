@@ -21,6 +21,7 @@ export class DaysComponent implements OnInit {
   detalleViaje: any | null = null;
   viajeData: DiaViaje[] | undefined;
   formularioViaje: FormGroup;
+  ordenDias: string[] = [];
 
   // Añadir ViewChild para obtener referencia a DetailComponent
   @ViewChild(DetailComponent)
@@ -56,15 +57,38 @@ export class DaysComponent implements OnInit {
     this.cdr.detectChanges();
   }
 
+  getIdDia(dia: string) {
+    if (dia === 'lunes') {  return '1'; }
+    if (dia === 'martes') {  return '2'; }
+    if (dia === 'miercoles') {  return '3'; }
+    if (dia === 'jueves') {  return '4'; }
+    if (dia === 'viernes') {  return '5'; }
+    if (dia === 'sabado') {  return '6'; }
+    if (dia === 'domingo') {  return '7'; } 
+    return '8'; 
+}
+
   filtrarViajes() {
-    return this.viajes.filter((v) => {
-      return (
-        this.normalizeStr(v.dia).includes(this.normalizeStr(this.filtroDia)) &&
-        this.normalizeStr(v.ciudad).includes(
-          this.normalizeStr(this.filtroCiudad)
-        )
-      );
+
+    // Primero filtramos los viajes
+    const viajesFiltrados = this.viajes.filter(v => {
+        return this.normalizeStr(v.dia).includes(this.normalizeStr(this.filtroDia)) &&
+               this.normalizeStr(v.ciudad).includes(this.normalizeStr(this.filtroCiudad));
     });
+
+    // Luego, ordenamos los viajes filtrados
+    viajesFiltrados.sort((a, b) => {
+        // Comparar días utilizando el mapeo
+        const ordenDiaA = this.getIdDia(a.dia.toLowerCase());
+        const ordenDiaB = this.getIdDia(b.dia.toLowerCase());
+        if (ordenDiaA < ordenDiaB) return -1;
+        if (ordenDiaA > ordenDiaB) return 1;
+
+        // Si los días son iguales, ordenar por 'nombre' alfabéticamente
+        return a.nombre.localeCompare(b.nombre);
+    });
+
+    return viajesFiltrados;
   }
 
   normalizeStr(data: string | null | undefined): string {
