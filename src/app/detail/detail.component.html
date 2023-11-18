@@ -1,5 +1,6 @@
 <div id="modal-viaje-{{ componentId }}-{{ viaje.codigo }}" class="modal modal-viaje-{{ viaje.codigo }}" *ngIf="viaje">
     <form [formGroup]="editForm">
+        <input type="hidden" class="form-control" formControlName="codigo">
         <div class="modal-content">
             <div class="modal-content-title">
                 <h2><input type="text" class="form-control" formControlName="nombre"></h2>

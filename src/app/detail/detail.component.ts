@@ -21,6 +21,7 @@ export class DetailComponent implements OnInit {
   ) {
     this.notifier = notifier;
     this.editForm = new FormGroup({
+      codigo: new FormControl(''),
       nombre: new FormControl('', Validators.required),
       ciudad: new FormControl('', Validators.required),
       dia: new FormControl('', Validators.required),
@@ -35,6 +36,7 @@ export class DetailComponent implements OnInit {
   ngOnInit(): void {
     if(this.viaje) {
       this.editForm = new FormGroup({
+        codigo: new FormControl(this.viaje.codigo),
         nombre: new FormControl(this.viaje.nombre, Validators.required),
         ciudad: new FormControl(this.viaje.ciudad, Validators.required),
         dia: new FormControl(this.viaje.dia, Validators.required),

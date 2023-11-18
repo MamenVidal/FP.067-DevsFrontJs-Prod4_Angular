@@ -12,6 +12,7 @@ import {
   getDocs,
   addDoc,
   setDoc,
+  DocumentReference,
 } from '@angular/fire/firestore';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
@@ -124,6 +125,28 @@ export class ViajeService {
       console.error('Error al agregar el nuevo viaje en Firebase: ', error);
       return false;
     }
+  }
+
+  async addViaje2(nuevoViaje: DiaViaje): Promise<DocumentReference> {
+    const viajeCollectionRef = collection(this.firestore, 'MiViaje');
+    const nuevoViajeDocRef = await addDoc(viajeCollectionRef, {
+      // El id se genera solo
+      codigo: nuevoViaje.codigo,
+      dia: nuevoViaje.dia,
+      nombre: nuevoViaje.nombre,
+      ciudad: nuevoViaje.ciudad,
+      alojamiento: nuevoViaje.alojamiento,
+      actividades: nuevoViaje.actividades,
+      descripcion: nuevoViaje.descripcion,
+      video: nuevoViaje.video,
+      imagen: nuevoViaje.imagen,
+    });
+    console.log(
+      'Nuevo viaje agregado exitosamente en Firebase con ID:',
+      nuevoViajeDocRef.id
+    );
+    return nuevoViajeDocRef;
+
   }
 
   actualizaViaje(id: string, data: DiaViaje) {

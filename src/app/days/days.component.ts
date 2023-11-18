@@ -1,10 +1,13 @@
-import { Component, OnInit, ViewChild, inject } from '@angular/core';
+import { ChangeDetectorRef, Component, OnInit, ViewChild, inject } from '@angular/core';
 import { ViajeService } from '../viaje/viaje.service';
 import { DiaViaje } from '../viaje/viaje-data';
 import { DetailComponent } from '../detail/detail.component';
 import { NotifierService } from 'angular-notifier';
 import { FormGroup } from '@angular/forms';
 import { FormBuilder } from '@angular/forms';
+import { DocumentReference } from 'firebase/firestore';
+import * as uuid from 'uuid';
+
 
 @Component({
   selector: 'app-days',
@@ -26,7 +29,8 @@ export class DaysComponent implements OnInit {
   constructor(
     private viajeService: ViajeService,
     private notifier: NotifierService,
-    private formBuilder: FormBuilder
+    private formBuilder: FormBuilder,
+    private cdr: ChangeDetectorRef
   ) {
     this.notifier = notifier;
     this.formularioViaje = this.formBuilder.group({
@@ -46,6 +50,10 @@ export class DaysComponent implements OnInit {
     this.viajeService.getViaje().subscribe((data) => {
       this.viajes = data;
     });
+  }
+
+  refresh() {
+    this.cdr.detectChanges();
   }
 
   filtrarViajes() {
@@ -115,6 +123,55 @@ export class DaysComponent implements OnInit {
           console.error('Error inesperado: ', error);
         });
     }
+  }
+
+  getRandomInt(max: number) {
+    return Math.floor(Math.random() * max);
+  }
+
+  addViajeButton() {
+    const newViaje: DiaViaje = {
+      id: uuid.v4(),
+      codigo: this.getRandomInt(100000),
+      dia: '',
+      nombre: '',
+      ciudad: '',
+      alojamiento: '',
+      actividades: [],
+      descripcion: '',
+      video: '',
+      imagen: ''
+    };
+    this.viajes.push(newViaje);
+    this.detalleViaje = newViaje;
+    this.refresh();
+    this.openModal('daysId', newViaje);
+    //
+
+    /*
+    this.viajeService
+      .addViaje2(newViaje)
+      .then((resultado: DocumentReference) => {
+        if (resultado) {
+          this.mostrarNotificacion('success', 'Elemento añadido correctamente');
+          //this.viajes.push(newViaje);
+          console.log(newViaje);
+          const newId = resultado.id;
+          //this.refresh();
+          console.log(newViaje);
+          this.openModal('daysId', newViaje);
+        } else {
+          this.mostrarNotificacion('error', 'Error al añadir el elemento');
+        }
+      })
+      .catch((error: any) => {
+        this.mostrarNotificacion(
+          'error',
+          'Error inesperado al añadir el elemento'
+        );
+        console.error('Error inesperado: ', error);
+      });
+      */
   }
 
   addViaje(nuevoViaje: DiaViaje) {
