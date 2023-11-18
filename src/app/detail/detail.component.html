@@ -47,15 +47,18 @@
                         </div>
                     </div>
                 </div>
-                <div class="modal-content-imagen">
-                    <img class="bd-placeholder-img rounded-circle" width="140" height="140" src="{{ viaje.imagen }}" />
-                    <input type="file" (change)="onFileSelected($event, 'imagen')" accept="image/*">
-                </div>
                 <div class="modal-content-video">
-                    <p class="details details-r">Vídeo</p>
-                    <app-player *ngIf="viaje.video" [videoSrc]="viaje.video"></app-player>
-                    <p *ngIf="!viaje.video">Lamentablemente no tenemos un vídeo para este día.</p>
-                    <input type="file" (change)="onFileSelected($event, 'video')" accept="video/*">
+                    <p class="details details-r">Multimedia</p>
+                    <div class="modal-content-imagen">
+                        <app-player *ngIf="viaje.video" [videoSrc]="viaje.video"></app-player>
+                        <p *ngIf="!viaje.video">Lamentablemente no tenemos un vídeo para este día.</p>
+                        <input type="file" (change)="onFileSelected($event, 'video')" accept="video/*" style="margin-top: 10px !important;">
+                    </div>
+                    <div class="modal-content-imagen" style="margin-top: 20px !important; padding-top: 20px; border-top: 0.1em solid rgb(222, 226, 230);">
+                        <img *ngIf="viaje.imagen" class="bd-placeholder-img rounded-circle" width="140" height="140" src="{{ viaje.imagen }}" />
+                        <p *ngIf="!viaje.imagen">Lamentablemente no tenemos una imagen para este día.</p>
+                        <input type="file" (change)="onFileSelected($event, 'imagen')" accept="image/*" style="margin-top: 10px !important;">
+                    </div>
                 </div>
             </div>
             <div class="detail-botones">
