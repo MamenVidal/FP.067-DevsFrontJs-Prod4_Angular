@@ -131,7 +131,7 @@ export class DaysComponent implements OnInit {
               // TODO Eliminaremos esta comprobación al subir el proyecto a producción
               this.mostrarNotificacion('error', 'Error al eliminar el elemento');
             } else {
-              this.mostrarNotificacion('error','De momento no permitimos borrar elementos del 1 al 10');
+              this.mostrarNotificacion('error', 'No permitimos borrar elementos del 1 al 10 ya que son los elementos iniciales de la aplicación');
             }
           }
         })
