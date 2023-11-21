@@ -1,9 +1,8 @@
-export interface ViajeData {
-  MiViaje: DiaViaje[];
-}
-  
+import { Timestamp } from "firebase/firestore";
+
 export interface DiaViaje {
-  id: number;
+  id: string;
+  codigo: number;
   dia: string;
   nombre: string;
   ciudad: string;
@@ -12,5 +11,6 @@ export interface DiaViaje {
   descripcion: string;
   video: string;
   imagen: string;
+  fecha: string;
 }
   
