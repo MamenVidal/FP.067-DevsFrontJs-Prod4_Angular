@@ -1,3 +1,5 @@
+import { Timestamp } from "firebase/firestore";
+
 export interface DiaViaje {
   id: string;
   codigo: number;
@@ -9,5 +11,6 @@ export interface DiaViaje {
   descripcion: string;
   video: string;
   imagen: string;
+  fecha: string;
 }
   

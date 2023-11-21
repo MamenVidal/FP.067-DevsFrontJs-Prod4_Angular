@@ -3,12 +3,16 @@
         <input type="hidden" class="form-control" formControlName="codigo">
         <div class="modal-content">
             <div class="modal-content-title">
-                <h2><input type="text" class="form-control" formControlName="nombre"></h2>
+                <h2><input type="text" class="form-control" formControlName="nombre" placeholder="Título"></h2>
             </div>
             <div class="modal-content-details">
                 <div class="modal-content-detail">
                     <p class="details details-l">Detalles</p>
                     <div class="row">
+                        <div class="col">
+                            <label class="bold">Fecha</label>
+                            <input type="date" class="form-control" formControlName="fecha">
+                        </div>
                         <div class="col">
                             <label class="bold">Día de la semana</label>
                             <select class="form-control" formControlName="dia">
@@ -22,12 +26,12 @@
                                 <option value="Domingo">Domingo</option>
                             </select>
                         </div>
-                        <div class="col">
-                            <label class="bold">Ciudad</label>
-                            <input type="text" class="form-control" formControlName="ciudad">
-                        </div>
                     </div>
                     <div class="row">
+                        <div class="col">
+                            <label class="bold">Ciudad</label>
+                            <input type="text" class="form-control" formControlName="ciudad" placeholder="Nombre de la ciudad">
+                        </div>
                         <div class="col">
                             <label class="bold">Alojamiento</label>
                             <input type="text" class="form-control" formControlName="alojamiento">

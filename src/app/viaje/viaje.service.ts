@@ -6,18 +6,16 @@ import {
   query,
   orderBy,
   deleteDoc,
-  getFirestore,
   doc,
   where,
   getDocs,
   addDoc,
   setDoc,
-  DocumentReference,
 } from '@angular/fire/firestore';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { DiaViaje } from './viaje-data';
-import { Storage, UploadTask, ref, uploadBytesResumable, uploadBytes, getDownloadURL, getStorage } from '@angular/fire/storage';
+import { Storage, ref, uploadBytes, getDownloadURL } from '@angular/fire/storage';
 
 
 @Injectable({
@@ -34,9 +32,9 @@ export class ViajeService {
     const itemCollection = collection(this.firestore, 'MiViaje');
     this.storage = storage;
 
-    // Usamos la consulta en collectionData, aplicando la ordenación por el campo deseado (por ejemplo, 'codigo')
+    // Usamos la consulta en collectionData, aplicando la ordenación por el campo deseado (por ejemplo, 'fecha')
     const resultados = collectionData(
-      query(itemCollection, orderBy('codigo')),
+      query(itemCollection, orderBy('fecha')),
       { idField: 'id' }
     );
 
@@ -56,6 +54,7 @@ export class ViajeService {
             descripcion: data.descripcion,
             video: data.video,
             imagen: data.imagen,
+            fecha: data.fecha,
           } as DiaViaje;
         })
       )
@@ -100,10 +99,8 @@ export class ViajeService {
   }
 
   async addViaje(nuevoViaje: DiaViaje): Promise<boolean> {
-    const viajeCollectionRef = collection(this.firestore, 'MiViaje');
     try {
       const viajeCollectionRef = collection(this.firestore, 'MiViaje');
-
       const nuevoViajeDocRef = await addDoc(viajeCollectionRef, {
         // El id se genera solo
         codigo: nuevoViaje.codigo,
@@ -115,11 +112,9 @@ export class ViajeService {
         descripcion: nuevoViaje.descripcion,
         video: nuevoViaje.video,
         imagen: nuevoViaje.imagen,
+        fecha: nuevoViaje.fecha
       });
-      console.log(
-        'Nuevo viaje agregado exitosamente en Firebase con ID:',
-        nuevoViajeDocRef.id
-      );
+      console.log('Nuevo viaje agregado exitosamente en Firebase con ID:', nuevoViajeDocRef.id);
       return true;
     } catch (error) {
       console.error('Error al agregar el nuevo viaje en Firebase: ', error);
@@ -127,27 +122,28 @@ export class ViajeService {
     }
   }
 
-  async addViaje2(nuevoViaje: DiaViaje): Promise<DocumentReference> {
-    const viajeCollectionRef = collection(this.firestore, 'MiViaje');
-    const nuevoViajeDocRef = await addDoc(viajeCollectionRef, {
-      // El id se genera solo
-      codigo: nuevoViaje.codigo,
-      dia: nuevoViaje.dia,
-      nombre: nuevoViaje.nombre,
-      ciudad: nuevoViaje.ciudad,
-      alojamiento: nuevoViaje.alojamiento,
-      actividades: nuevoViaje.actividades,
-      descripcion: nuevoViaje.descripcion,
-      video: nuevoViaje.video,
-      imagen: nuevoViaje.imagen,
-    });
-    console.log(
-      'Nuevo viaje agregado exitosamente en Firebase con ID:',
-      nuevoViajeDocRef.id
-    );
-    return nuevoViajeDocRef;
+  // async addViaje2(nuevoViaje: DiaViaje): Promise<DocumentReference> {
+  //   const viajeCollectionRef = collection(this.firestore, 'MiViaje');
+  //   const nuevoViajeDocRef = await addDoc(viajeCollectionRef, {
+  //     // El id se genera solo
+  //     codigo: nuevoViaje.codigo,
+  //     dia: nuevoViaje.dia,
+  //     nombre: nuevoViaje.nombre,
+  //     ciudad: nuevoViaje.ciudad,
+  //     alojamiento: nuevoViaje.alojamiento,
+  //     actividades: nuevoViaje.actividades,
+  //     descripcion: nuevoViaje.descripcion,
+  //     video: nuevoViaje.video,
+  //     imagen: nuevoViaje.imagen,
+  //     fecha: nuevoViaje.fecha,
+  //   });
+  //   console.log(
+  //     'Nuevo viaje agregado exitosamente en Firebase con ID:',
+  //     nuevoViajeDocRef.id
+  //   );
+  //   return nuevoViajeDocRef;
 
-  }
+  // }
 
   actualizaViaje(id: string, data: DiaViaje) {
     const viajeDocRef = doc(this.firestore, 'MiViaje', id);
@@ -186,6 +182,5 @@ export class ViajeService {
       }
     });
   }
-  
 
 }

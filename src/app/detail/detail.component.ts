@@ -30,6 +30,7 @@ export class DetailComponent implements OnInit {
       //actividades: new FormControl(this.viaje.actividades),
       video: new FormControl(''),
       imagen: new FormControl(''),
+      fecha: new FormControl('', Validators.required),
     });
   }
 
@@ -45,6 +46,7 @@ export class DetailComponent implements OnInit {
         //actividades: new FormControl(this.viaje.actividades),
         video: new FormControl(this.viaje.video),
         imagen: new FormControl(this.viaje.imagen),
+        fecha: new FormControl(this.viaje.fecha, Validators.required),
       });
     }
   }
@@ -102,6 +104,5 @@ export class DetailComponent implements OnInit {
       });
     }
   }
-  
   
 }
