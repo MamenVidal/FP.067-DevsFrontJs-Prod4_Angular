@@ -49,6 +49,18 @@ export class DetailComponent implements OnInit {
         fecha: new FormControl(this.viaje.fecha, Validators.required),
       });
     }
+
+    this.editForm.get('fecha')?.valueChanges.subscribe((fecha) => {
+      if (fecha) {
+        const date = new Date(fecha);
+        const diasSemana = ['Domingo', 'Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado'];
+        const diaSeleccionado = diasSemana[date.getDay()];
+
+        this.editForm.patchValue({
+          dia: diaSeleccionado,
+        });
+      }
+    });
   }
   
   openModal(componentId: String, viaje: any) {
