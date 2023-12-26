@@ -12,10 +12,12 @@ import { AppRoutingModule } from './app-routing.module';
 import { provideFirebaseApp, initializeApp } from '@angular/fire/app';
 import { getFirestore, provideFirestore } from '@angular/fire/firestore';
 import { getStorage, provideStorage } from '@angular/fire/storage';
+import { getMessaging, provideMessaging, getToken, onMessage } from "@angular/fire/messaging";
 import { environment } from '../environments/environment';
 import { ReactiveFormsModule } from '@angular/forms';
 
 import { NotifierModule, NotifierOptions } from 'angular-notifier';
+
 const customNotifierOptions: NotifierOptions = {
   position: {
     horizontal: {
@@ -68,6 +70,7 @@ const customNotifierOptions: NotifierOptions = {
     provideFirebaseApp(() => initializeApp(environment.firebase)),
     provideFirestore(() => getFirestore()),
     provideStorage(() => getStorage()),
+    provideMessaging(() => getMessaging()),
     // Agregamos notificaciones
     NotifierModule.withConfig(customNotifierOptions),
   ],
