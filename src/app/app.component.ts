@@ -29,8 +29,6 @@ export class AppComponent implements OnInit {
   constructor(private viajeService: ViajeService, notifier: NotifierService) {
     this.notifier = notifier;
 
-  
-
       const firebaseApp = initializeApp(environment.firebase);
       const messaging = getMessaging(firebaseApp);
       onMessage(messaging, (payload) => {
@@ -51,7 +49,6 @@ export class AppComponent implements OnInit {
         }).catch((err) => {
           console.log('An error occurred while retrieving token. ', err);
         });
-      
 
   }
 
@@ -65,7 +62,6 @@ export class AppComponent implements OnInit {
     Notification.requestPermission().then((permission) => {
       if (permission === 'granted') {
         console.log('Notification permission granted.');
-        // Aquí podrías inicializar Firebase Messaging o hacer algo más
       } else {
         console.log('Notification permission not granted.');
       }
