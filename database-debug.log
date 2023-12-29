@@ -1,0 +1,14 @@
+09:50:22.101 [NamespaceSystem-akka.actor.default-dispatcher-4] INFO akka.event.slf4j.Slf4jLogger - Slf4jLogger started
+09:50:22.161 [main] INFO com.firebase.server.forge.App$ - Listening at 127.0.0.1:9001
+09:50:28.533 [NamespaceSystem-akka.actor.default-dispatcher-4] INFO com.firebase.core.namespace.NamespaceActor - misviajes-d61aa-default-rtdb successfully activated FBKV (SurveyIdle(0)) wait: 55ms, init: 0ms
+09:50:28.560 [NamespaceSystem-blocking-namespace-operation-dispatcher-7] INFO com.firebase.core.namespace.StateManager - Namespace misviajes-d61aa-default-rtdb status Active to Active
+09:50:45.846 [FirebaseWorkerPool-1-3] WARN com.firebase.core.persistence.backend.dummy.EmulatorMetadataPersistence - Multiple projectIds are not recommended in single project mode. Requested 
+namespace misviajes-d61aa, but the emulator is configured for misviajes-d61aa-default-rtdb. To 
+opt-out of single project mode add/set the singleProjectMode: false property in 
+the firebase.json emulators config. 
+09:50:45.856 [NamespaceSystem-akka.actor.default-dispatcher-5] INFO com.firebase.core.namespace.NamespaceActor - misviajes-d61aa successfully activated FBKV (SurveyIdle(0)) wait: 2ms, init: 0ms
+09:51:10.440 [Thread-0] INFO com.firebase.server.forge.App$ - Attempting graceful shutdown.
+09:51:10.447 [NamespaceSystem-akka.actor.default-dispatcher-8] INFO com.firebase.core.namespace.Terminator$Terminator - 2 actors left to terminate: misviajes-d61aa-default-rtdb, misviajes-d61aa
+09:51:10.452 [NamespaceSystem-akka.actor.default-dispatcher-13] INFO com.firebase.core.namespace.NamespaceActor - stopped namespace actor for misviajes-d61aa
+09:51:10.452 [NamespaceSystem-akka.actor.default-dispatcher-5] INFO com.firebase.core.namespace.NamespaceActor - stopped namespace actor for misviajes-d61aa-default-rtdb
+09:51:10.454 [Thread-0] INFO com.firebase.server.forge.App$ - Graceful shutdown complete.
