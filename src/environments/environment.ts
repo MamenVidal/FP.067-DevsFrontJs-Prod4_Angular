@@ -8,9 +8,10 @@ export const environment = {
         storageBucket: "misviajes-d61aa.appspot.com",
         messagingSenderId: "398595674992",
         appId: "1:398595674992:web:1b573fde23396d497735b5",
-        measurementId: "G-YZZECZZEPY"
+        measurementId: "G-YZZECZZEPY",
+        vapidKey: "BDo-bkvV-RNFApJjou_nrRyEjFGJrURUykrRmhx52BtKOWZEiVV8pkIOGhAjlcb1xH0YGJBKpVZoonGOE20i5Dc",
     },
-    useEmulators: true, 
+    useEmulators: true, // Cambiar a true para usar emuladores
     emulatorConfig: { // Y esta sección para configurar los emuladores
         firestore: {
             host: 'localhost',

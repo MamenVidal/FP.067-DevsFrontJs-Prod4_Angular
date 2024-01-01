@@ -21,6 +21,7 @@ import { NotifierModule, NotifierOptions } from 'angular-notifier';
 import { connectFirestoreEmulator } from 'firebase/firestore';
 import { connectStorageEmulator } from 'firebase/storage';
 import { connectFunctionsEmulator } from 'firebase/functions';
+import { NotificationComponent } from './notification/notification.component';
 
 
 const customNotifierOptions: NotifierOptions = {
@@ -71,6 +72,7 @@ const customNotifierOptions: NotifierOptions = {
     BrowserModule,
     ReactiveFormsModule,
     AppRoutingModule,
+    NotificationComponent,
     // Creamos la aplicación de Firebase con nuestra configuración
     provideFirebaseApp(() => initializeApp(environment.firebase)),
     //provideFirestore(() => getFirestore()),

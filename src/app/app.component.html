@@ -12,9 +12,8 @@
   </nav>
 </header>
 
-<notifier-container></notifier-container>
-
 <main>
+  
   <div id="carouselTitulo" class="carousel slide" data-bs-ride="carousel">
     <div class="carousel-indicators">
       <button *ngFor="let dia of viajeData; let i = index" [class.active]="i === 0" [attr.data-bs-target]="'#carouselTitulo'" [attr.data-bs-slide-to]="i" aria-current="true"></button>
@@ -42,6 +41,9 @@
     </a>
   </div>
   
+  <!-- Componente Notification -->
+  <app-notification></app-notification>
+
   <!-- Componente Days -->
   <app-days></app-days>
 
