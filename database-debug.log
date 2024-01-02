@@ -1,4 +1,8 @@
-17:02:57.802 [NamespaceSystem-akka.actor.default-dispatcher-4] INFO akka.event.slf4j.Slf4jLogger - Slf4jLogger started
-17:02:57.893 [main] INFO com.firebase.server.forge.App$ - Listening at 127.0.0.1:9001
-17:03:05.358 [NamespaceSystem-akka.actor.default-dispatcher-4] INFO com.firebase.core.namespace.NamespaceActor - misviajes-d61aa-default-rtdb successfully activated FBKV (SurveyIdle(0)) wait: 54ms, init: 0ms
-17:03:05.391 [NamespaceSystem-blocking-namespace-operation-dispatcher-6] INFO com.firebase.core.namespace.StateManager - Namespace misviajes-d61aa-default-rtdb status Active to Active
+09:48:15.771 [NamespaceSystem-akka.actor.default-dispatcher-4] INFO akka.event.slf4j.Slf4jLogger - Slf4jLogger started
+09:48:15.916 [main] INFO com.firebase.server.forge.App$ - Listening at 127.0.0.1:9001
+09:48:22.375 [NamespaceSystem-akka.actor.default-dispatcher-4] INFO com.firebase.core.namespace.NamespaceActor - misviajes-d61aa-default-rtdb successfully activated FBKV (SurveyIdle(0)) wait: 80ms, init: 0ms
+09:48:22.412 [NamespaceSystem-blocking-namespace-operation-dispatcher-6] INFO com.firebase.core.namespace.StateManager - Namespace misviajes-d61aa-default-rtdb status Active to Active
+09:52:36.020 [Thread-0] INFO com.firebase.server.forge.App$ - Attempting graceful shutdown.
+09:52:36.023 [NamespaceSystem-akka.actor.default-dispatcher-9] INFO com.firebase.core.namespace.Terminator$Terminator - 1 actors left to terminate: misviajes-d61aa-default-rtdb
+09:52:36.026 [NamespaceSystem-akka.actor.default-dispatcher-9] INFO com.firebase.core.namespace.NamespaceActor - stopped namespace actor for misviajes-d61aa-default-rtdb
+09:52:36.028 [Thread-0] INFO com.firebase.server.forge.App$ - Graceful shutdown complete.

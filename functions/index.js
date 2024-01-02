@@ -20,6 +20,7 @@ exports.addmessage = onRequest(async (req, res) => {
 
   res.json({result: `Message with ID: ${writeResult.id} added.`});
 });
+
 // Listens for new messages added to /messages/:documentId/original
 // and saves an uppercased version of the message
 // to /messages/:documentId/uppercase
@@ -31,48 +32,56 @@ exports.makeuppercase = onDocumentCreated("/messages/{documentId}", (event) => {
 });
 
 exports.onDocumentWrite = functions.firestore
-  .document('MiViaje/{docId}')
-  .onWrite((change, context) => {
-    const document = change.after.exists ? change.after.data() : null;
-    const message = {
-      notification: {
-        title: 'Documento Cambiado onDocumentWrite',
-        body: 'Datos finales: '+JSON.stringify(document)
-      },
-      topic: 'viajes' 
-    };
+    .document("MiViaje/{docId}")
+    .onWrite((change) => {
+      const document = change.after.exists ? change.after.data() : null;
+      const message = {
+        notification: {
+          title: "Documento Cambiado onDocumentWrite",
+          body: `Datos finales: ${JSON.stringify(document)}`,
+        },
+        topic: "viajes",
+      };
 
-    // Enviar notificación
-    return admin.messaging().send(message)
-      .then(response => {
-        console.log('Notificación enviada exitosamente:', response, message);
-        return response;
-      })
-      .catch(error => {
-        console.error('Error enviando la notificación:', error, message);
-      });
-  });
+      // Enviar notificación
+      return admin.messaging().send(message)
+          .then((response) => {
+            console.log(
+                "Notificación enviada exitosamente:",
+                response,
+                message);
+            return response;
+          })
+          .catch((error) => {
+            console.error("Error enviando la notificación:",
+                error,
+                message);
+          });
+    });
 
 exports.onDocumentUpdated = functions.firestore
-  .document('MiViaje/{docId}')
-  .onUpdate((change, context) => {
-    // Tu lógica para cuando un documento se actualiza
-    const newValue = change.after.data();
-    const message = {
-      notification: {
-        title: 'Documento actualizado onDocumentUpdated',
-        body: 'Datos finales: '+JSON.stringify(newValue)
-      },
-      topic: 'viajes' // Reemplaza con el topic al cual los usuarios se suscriben
-    };
+    .document("MiViaje/{docId}")
+    .onUpdate((change) => {
+      const newValue = change.after.data();
+      const message = {
+        notification: {
+          title: "Documento actualizado onDocumentUpdated",
+          body: `Datos finales: ${JSON.stringify(newValue)}`,
+        },
+        topic: "viajes",
+      };
 
-    // Enviar notificación
-    return admin.messaging().send(message)
-      .then(response => {
-          console.log('Notificación enviada exitosamente:', response, message);
-          return response;
-      })
-      .catch(error => {
-          console.error('Error enviando la notificación:', error, message);
-      });
-});
+      // Enviar notificación
+      return admin.messaging().send(message)
+          .then((response) => {
+            console.log("Notificación enviada exitosamente:",
+                response,
+                message);
+            return response;
+          })
+          .catch((error) => {
+            console.error("Error enviando la notificación:",
+                error,
+                message);
+          });
+    });
